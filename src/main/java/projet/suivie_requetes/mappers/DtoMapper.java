@@ -6,7 +6,7 @@ import projet.suivie_requetes.dtos.*;
 import projet.suivie_requetes.entities.*;
 
 @Service
-public class dtoMapper {
+public class DtoMapper {
     public ClientDTO fromClienttoClientDTO(Client client){
         ClientDTO clientDTO = new ClientDTO();
         BeanUtils.copyProperties(client, clientDTO);
