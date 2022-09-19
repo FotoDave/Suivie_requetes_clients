@@ -3,10 +3,7 @@ package projet.suivie_requetes.restControllers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import projet.suivie_requetes.dtos.ClientDTO;
-import projet.suivie_requetes.dtos.CollaborateurDTO;
-import projet.suivie_requetes.dtos.PlanifierTacheDTO;
-import projet.suivie_requetes.dtos.TacheDTO;
+import projet.suivie_requetes.dtos.*;
 import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
 import projet.suivie_requetes.exceptions.RequetteNotFoundException;
 import projet.suivie_requetes.exceptions.TacheAlreadyExistException;
@@ -55,5 +52,11 @@ public class TacheController {
     @PostMapping("/planifierTache")
     public TacheDTO planifierTache(@RequestBody PlanifierTacheDTO planifierTacheDTO) throws TacheNotFoundException {
         return tacheService.planifierTache(planifierTacheDTO);
+    }
+
+    @PutMapping("/modifierStatusTache/{id}")
+    public void modifierStatusTache(@PathVariable Long id,
+                                    @RequestBody ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException {
+        tacheService.modifierStatusTache(modifStatusTacheDTO);
     }
 }

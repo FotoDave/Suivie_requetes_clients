@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
 import projet.suivie_requetes.dtos.PlanifierTacheDTO;
 import projet.suivie_requetes.dtos.TacheDTO;
 import projet.suivie_requetes.ennums.StatusTache;
@@ -16,12 +17,13 @@ import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
+@Transactional(noRollbackFor = Exception.class)
 @Slf4j
 public class TacheServiceImpl implements TacheService {
     @Autowired
@@ -47,7 +49,7 @@ public class TacheServiceImpl implements TacheService {
         Tache tache = dtoMapper.fromTacheDTOtoTache(tacheDTO);
         Optional<Collaborateur> collaborateur = collaborateurRepository.findById(tacheDTO.getCollaborateurId());
         Optional<Requette> requette = requetteRepository.findById(tacheDTO.getRequetteId());
-        if(collaborateur.isEmpty() && requette.isEmpty()){
+        if(collaborateur.isEmpty() || requette.isEmpty()){
             throw new RequetteNotFoundException("Requette ou Collaborateur not found");
         }else{
             tache.setCollaborateur(collaborateur.get());
@@ -94,6 +96,23 @@ public class TacheServiceImpl implements TacheService {
         tacheRepository.save(tache);
         
         return dtoMapper.fromTachetoTacheDTO(tache);
+    }
+
+    @Override
+    public void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException {
+        log.info("Modifier le status de la tache");
+        if (tacheRepository.findById(modifStatusTacheDTO.getId()).isEmpty()){
+            throw new TacheNotFoundException();
+        }
+        Tache tache = tacheRepository.findById(modifStatusTacheDTO.getId()).get();
+        tache.setStatusTache(modifStatusTacheDTO.getStatusTache());
+        if (tache.getStatusTache().equals(StatusTache.EN_COURS)){
+            tache.setDateDebut(new Date());
+        }
+        if (tache.getStatusTache().equals(StatusTache.TERMINE)){
+            tache.setDateFin(new Date());
+        }
+        tacheRepository.save(tache);
     }
 
 }

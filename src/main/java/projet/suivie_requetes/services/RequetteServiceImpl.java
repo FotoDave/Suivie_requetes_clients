@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 @Slf4j
 public class RequetteServiceImpl implements RequetteService {
     @Autowired

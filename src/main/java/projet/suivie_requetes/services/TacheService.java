@@ -1,5 +1,6 @@
 package projet.suivie_requetes.services;
 
+import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
 import projet.suivie_requetes.dtos.PlanifierTacheDTO;
 import projet.suivie_requetes.dtos.TacheDTO;
 import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
@@ -17,4 +18,6 @@ public interface TacheService {
     List<TacheDTO> listerTache();
 
     TacheDTO planifierTache(PlanifierTacheDTO planifierTacheDTO) throws TacheNotFoundException;
+
+    void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException;
 }
