@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.ClientDTO;
 import projet.suivie_requetes.entities.Client;
+import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
@@ -39,6 +40,7 @@ public class ClientServiceImpl implements ClientService {
     }
     @Override
     public List<ClientDTO> listClients(){
+        log.info("Mise à jour du client");
         List<Client> clients = clientRepository.findAll();
         List<ClientDTO> clientDTOS = clients.stream()
                 .map(client -> dtoMapper.fromClienttoClientDTO(client))
@@ -47,7 +49,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteClient(Long id){
+    public void deleteClient(Long id) throws ClientNotFoundException {
+        log.info("Suppression du client");
+        if (clientRepository.findById(id).isEmpty()) {
+            throw new ClientNotFoundException();
+        }
         clientRepository.deleteById(id);
     }
 }

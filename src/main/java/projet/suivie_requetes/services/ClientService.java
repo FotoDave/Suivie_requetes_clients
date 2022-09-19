@@ -1,6 +1,7 @@
 package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.ClientDTO;
+import projet.suivie_requetes.exceptions.ClientNotFoundException;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ public interface ClientService {
 
     List<ClientDTO> listClients();
 
-    void deleteClient(Long id);
+    void deleteClient(Long id) throws ClientNotFoundException;
 }

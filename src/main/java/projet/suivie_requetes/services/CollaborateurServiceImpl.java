@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.CollaborateurDTO;
 import projet.suivie_requetes.entities.Collaborateur;
+import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
@@ -48,8 +49,11 @@ public class CollaborateurServiceImpl implements CollaborateurService {
     }
 
     @Override
-    public void deleteCollaborateur(Long id){
+    public void deleteCollaborateur(Long id) throws CollaborateurNotFoundException {
         log.info("Suppression du collaborateur");
+        if (collaborateurRepository.findById(id).isEmpty()){
+            throw new CollaborateurNotFoundException();
+        }
         collaborateurRepository.deleteById(id);
     }
 }

@@ -10,5 +10,5 @@ public class CommentaireDTO {
     private String libelle;
     private StatusCommenttaire statusCommenttaire;
 
-    private TacheDTO tache;
+    private Long tacheId;
 }

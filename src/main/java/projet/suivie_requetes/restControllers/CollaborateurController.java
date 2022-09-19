@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.CollaborateurDTO;
+import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
 import projet.suivie_requetes.services.*;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class CollaborateurController {
     }
 
     @DeleteMapping("/collaborateurs/{id}")
-    public void deleteCollaborateur(@PathVariable Long id){
+    public void deleteCollaborateur(@PathVariable Long id) throws CollaborateurNotFoundException {
         collaborateurService.deleteCollaborateur(id);
     }
 }

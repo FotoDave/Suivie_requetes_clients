@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.ClientDTO;
+import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.services.*;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class ClientController {
         return clientService.creerClient(clientDTO);
     }
     @DeleteMapping("/clients/{id}")
-    public void deleteClient(@PathVariable Long id){
+    public void deleteClient(@PathVariable Long id) throws ClientNotFoundException {
         clientService.deleteClient(id);
     }
 }

@@ -43,6 +43,7 @@ public class DtoMapper {
     public RequetteDTO fromRequettetoRequetteDTO(Requette requette){
         RequetteDTO requetteDTO = new RequetteDTO();
         BeanUtils.copyProperties(requette, requetteDTO);
+        requetteDTO.setClientId(requette.getClient().getId());
         return requetteDTO;
     }
     public Requette fromRequetteDTOtoRequette(RequetteDTO requetteDTO){
@@ -54,6 +55,8 @@ public class DtoMapper {
     public TacheDTO fromTachetoTacheDTO(Tache tache){
         TacheDTO tacheDTO = new TacheDTO();
         BeanUtils.copyProperties(tache, tacheDTO);
+        tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
+        tacheDTO.setRequetteId(tache.getRequette().getId());
         return tacheDTO;
     }
     public Tache fromTacheDTOtoTache(TacheDTO tacheDTO){

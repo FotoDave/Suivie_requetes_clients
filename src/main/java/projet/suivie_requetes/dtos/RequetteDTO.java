@@ -17,5 +17,5 @@ public class RequetteDTO {
     private String observation;
     private TypeRequette typeRequette;
 
-    private ClientDTO client;
+    private Long clientId;
 }
