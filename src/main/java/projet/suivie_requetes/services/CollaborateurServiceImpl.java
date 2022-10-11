@@ -1,5 +1,6 @@
 package projet.suivie_requetes.services;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,19 +17,14 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(rollbackFor = Exception.class)
 @Slf4j
+@RequiredArgsConstructor
 public class CollaborateurServiceImpl implements CollaborateurService {
-    @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private CollaborateurRepository collaborateurRepository;
-    @Autowired
-    private CommentaireRepository commentaireRepository;
-    @Autowired
-    private RequetteRepository requetteRepository;
-    @Autowired
-    private TacheRepository tacheRepository;
-    @Autowired
-    private DtoMapper dtoMapper;
+    private final ClientRepository clientRepository;
+    private final CollaborateurRepository collaborateurRepository;
+    private final CommentaireRepository commentaireRepository;
+    private final RequetteRepository requetteRepository;
+    private final TacheRepository tacheRepository;
+    private final DtoMapper dtoMapper;
 
 
     @Override

@@ -1,5 +1,6 @@
 package projet.suivie_requetes.services;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,20 +17,14 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(rollbackFor = Exception.class)
 @Slf4j
+@RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
-    @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private CollaborateurRepository collaborateurRepository;
-    @Autowired
-    private CommentaireRepository commentaireRepository;
-    @Autowired
-    private RequetteRepository requetteRepository;
-    @Autowired
-    private TacheRepository tacheRepository;
-    @Autowired
-    private DtoMapper dtoMapper;
-
+    private final ClientRepository clientRepository;
+    private final CollaborateurRepository collaborateurRepository;
+    private final CommentaireRepository commentaireRepository;
+    private final RequetteRepository requetteRepository;
+    private final TacheRepository tacheRepository;
+    private final DtoMapper dtoMapper;
 
     @Override
     public ClientDTO creerClient(ClientDTO clientDTO) {
@@ -40,12 +35,22 @@ public class ClientServiceImpl implements ClientService {
     }
     @Override
     public List<ClientDTO> listClients(){
-        log.info("Mise à jour du client");
+        log.info("Lister clients");
         List<Client> clients = clientRepository.findAll();
         List<ClientDTO> clientDTOS = clients.stream()
                 .map(client -> dtoMapper.fromClienttoClientDTO(client))
                 .collect(Collectors.toList());
         return clientDTOS;
+    }
+
+    @Override
+    public List<ClientDTO> searchClients(String keyword) {
+        log.info("Recherche des clients");
+        List<Client> clients = clientRepository.searchClient(keyword);
+        List<ClientDTO> search = clients.stream().map(
+                client -> dtoMapper.fromClienttoClientDTO(client)).
+                collect(Collectors.toList());
+        return search;
     }
 
     @Override

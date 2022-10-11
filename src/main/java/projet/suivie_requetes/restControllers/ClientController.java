@@ -26,15 +26,20 @@ public class ClientController {
 
     @PostMapping("/clients")
     public ClientDTO creerClient(@RequestBody ClientDTO clientDTO){
-
         return clientService.creerClient(clientDTO);
     }
 
     @GetMapping("/clients")
     public List<ClientDTO> listClients(){
-
         return clientService.listClients();
     }
+
+    @GetMapping("/clients/search")
+    public List<ClientDTO> searchClients(@RequestParam(name = "keyword", defaultValue ="")
+                                             String keyword){
+        return clientService.searchClients("%"+keyword+"%");
+    }
+
 
     @PutMapping("/clients/{id}")
     public ClientDTO updateClient(@PathVariable Long id,

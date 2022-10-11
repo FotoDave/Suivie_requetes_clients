@@ -10,5 +10,8 @@ public interface ClientService {
 
     List<ClientDTO> listClients();
 
+    List<ClientDTO> searchClients(String keyword);
+
     void deleteClient(Long id) throws ClientNotFoundException;
+
 }
