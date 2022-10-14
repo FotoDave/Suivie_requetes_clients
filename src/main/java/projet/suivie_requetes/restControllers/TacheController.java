@@ -1,5 +1,6 @@
 package projet.suivie_requetes.restControllers;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,18 +15,14 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
+@RequiredArgsConstructor
 @Slf4j
 public class TacheController {
-    @Autowired
-    private ClientService clientService;
-    @Autowired
-    private CollaborateurService collaborateurService;
-    @Autowired
-    private CommentaireService commentaireService;
-    @Autowired
-    private RequetteService requetteService;
-    @Autowired
-    private TacheService tacheService;
+    private final ClientService clientService;
+    private final CollaborateurService collaborateurService;
+    private final CommentaireService commentaireService;
+    private final RequetteService requetteService;
+    private final TacheService tacheService;
 
     @PostMapping("/taches")
     public TacheDTO creerTache(@RequestBody TacheDTO tacheDTO) throws CollaborateurNotFoundException, RequetteNotFoundException, TacheAlreadyExistException {
@@ -35,6 +32,16 @@ public class TacheController {
     @GetMapping("/taches")
     public List<TacheDTO> listerTache(){
         return tacheService.listerTache();
+    }
+
+    @GetMapping("/taches/{id}")
+    public TacheDTO getOneTache(@PathVariable Long id){
+        return tacheService.getOneTache(id);
+    }
+
+    @GetMapping("/taches/search")
+    public List<TacheDTO> searchTache(@RequestParam String nom){
+        return tacheService.searchTache("%"+nom+"%");
     }
 
     @PutMapping("/taches/{id}")

@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 public class TacheServiceImpl implements TacheService {
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
     private final CollaborateurRepository collaborateurRepository;
     private final CommentaireRepository commentaireRepository;
     private final RequetteRepository requetteRepository;
@@ -72,6 +72,21 @@ public class TacheServiceImpl implements TacheService {
         List<TacheDTO> tacheDTOS = taches.stream().map(tache -> dtoMapper
                                                     .fromTachetoTacheDTO(tache))
                                                     .collect(Collectors.toList());
+        return tacheDTOS;
+    }
+
+    @Override
+    public TacheDTO getOneTache(Long id) {
+        Tache taches = tacheRepository.findById(id).get();
+        return dtoMapper.fromTachetoTacheDTO(taches);
+    }
+
+    @Override
+    public List<TacheDTO> searchTache(String nom) {
+        List<Tache> taches = tacheRepository.searchTache(nom);
+        List<TacheDTO> tacheDTOS = taches.stream().map(
+                        tache -> dtoMapper.fromTachetoTacheDTO(tache))
+                .collect(Collectors.toList());
         return tacheDTOS;
     }
 

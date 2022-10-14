@@ -3,6 +3,7 @@ package projet.suivie_requetes.services;
 import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
 import projet.suivie_requetes.dtos.PlanifierTacheDTO;
 import projet.suivie_requetes.dtos.TacheDTO;
+import projet.suivie_requetes.entities.Tache;
 import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
 import projet.suivie_requetes.exceptions.RequetteNotFoundException;
 import projet.suivie_requetes.exceptions.TacheAlreadyExistException;
@@ -16,6 +17,8 @@ public interface TacheService {
     void deleteTache(Long id) throws TacheNotFoundException;
 
     List<TacheDTO> listerTache();
+    TacheDTO getOneTache(Long id);
+    List<TacheDTO> searchTache(String nom);
 
     TacheDTO planifierTache(PlanifierTacheDTO planifierTacheDTO) throws TacheNotFoundException;
 

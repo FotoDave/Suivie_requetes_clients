@@ -10,6 +10,5 @@ import java.util.List;
 @Data
 public class CollaborateurDTO {
     private Long id;
-    @NotNull
     private String nom;
 }

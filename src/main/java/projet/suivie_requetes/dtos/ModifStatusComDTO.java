@@ -6,7 +6,6 @@ import projet.suivie_requetes.ennums.StatusCommenttaire;
 
 @Data
 public class ModifStatusComDTO {
-    @NotNull
     private Long id;
     private StatusCommenttaire statusCommenttaire;
 }

@@ -8,6 +8,8 @@ import java.util.List;
 public interface ClientService {
     ClientDTO creerClient(ClientDTO clientDTO);
 
+    ClientDTO oneClient(Long id);
+
     List<ClientDTO> listClients();
 
     List<ClientDTO> searchClients(String keyword);

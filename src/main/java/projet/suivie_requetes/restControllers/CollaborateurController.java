@@ -1,5 +1,6 @@
 package projet.suivie_requetes.restControllers;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +12,14 @@ import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin("*")
+@RequiredArgsConstructor
 @Slf4j
 public class CollaborateurController {
-    @Autowired
-    private ClientService clientService;
-    @Autowired
-    private CollaborateurService collaborateurService;
-    @Autowired
-    private CommentaireService commentaireService;
-    @Autowired
-    private RequetteService requetteService;
-    @Autowired
-    private TacheService tacheService;
+    private final ClientService clientService;
+    private final CollaborateurService collaborateurService;
+    private final CommentaireService commentaireService;
+    private final RequetteService requetteService;
+    private final TacheService tacheService;
 
     @PostMapping("/collaborateurs")
     public CollaborateurDTO creerCollaborateur(@RequestBody CollaborateurDTO collaborateurDTO){
@@ -31,6 +28,16 @@ public class CollaborateurController {
     @GetMapping("/collaborateurs")
     public List<CollaborateurDTO> listCollaborateurs(){
         return collaborateurService.listCollaborateurs();
+    }
+
+    @GetMapping("/collaborateurs/{id}")
+    public CollaborateurDTO getOneCollaborateur(@PathVariable Long id){
+        return collaborateurService.getOneCollaborateur(id);
+    }
+
+    @GetMapping("/collaborateurs/search")
+    public List<CollaborateurDTO> searchCollaborateur(@RequestParam String nom){
+        return collaborateurService.searchCollaborateur("%"+nom+"%");
     }
 
     @PutMapping("/collaborateurs/{id}")

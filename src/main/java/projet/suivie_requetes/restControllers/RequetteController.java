@@ -1,5 +1,6 @@
 package projet.suivie_requetes.restControllers;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,14 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
+@RequiredArgsConstructor
 @Slf4j
 public class RequetteController {
-    @Autowired
-    private ClientService clientService;
-    @Autowired
-    private CollaborateurService collaborateurService;
-    @Autowired
-    private CommentaireService commentaireService;
-    @Autowired
-    private RequetteService requetteService;
-    @Autowired
-    private TacheService tacheService;
+    private final ClientService clientService;
+    private final CollaborateurService collaborateurService;
+    private final CommentaireService commentaireService;
+    private final RequetteService requetteService;
+    private final TacheService tacheService;
 
     @PostMapping("/requettes")
     public RequetteDTO creerRequette(@RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException {
@@ -33,6 +30,16 @@ public class RequetteController {
     @GetMapping("/requettes")
     public List<RequetteDTO> listeRequettes(){
         return requetteService.listerRequette();
+    }
+
+    @GetMapping("/requettes/{id}")
+    public RequetteDTO getOneRequette(@PathVariable Long id){
+        return requetteService.getOneRequette(id);
+    }
+
+    @GetMapping("/requettes/search")
+    public List<RequetteDTO> searchRequette(@RequestParam String nom){
+        return requetteService.searchRequette("%"+nom+"%");
     }
 
     @PutMapping("/requettes/{id}")

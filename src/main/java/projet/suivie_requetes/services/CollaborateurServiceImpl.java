@@ -45,6 +45,22 @@ public class CollaborateurServiceImpl implements CollaborateurService {
     }
 
     @Override
+    public List<CollaborateurDTO> searchCollaborateur(String nom) {
+        List<Collaborateur> collaborateur = collaborateurRepository.searchCollaborateur(nom);
+        List<CollaborateurDTO> collaborateurDTOS = collaborateur.stream().map(
+                collaborateur1 -> dtoMapper.fromCollaborateurtoCollaborateurDTO(collaborateur1)
+        ).collect(Collectors.toList());
+        return collaborateurDTOS;
+    }
+
+    @Override
+    public CollaborateurDTO getOneCollaborateur(Long id) {
+        log.info("Récupération d'un collaborateur");
+        Collaborateur collaborateur = collaborateurRepository.findById(id).get();
+        return dtoMapper.fromCollaborateurtoCollaborateurDTO(collaborateur);
+    }
+
+    @Override
     public void deleteCollaborateur(Long id) throws CollaborateurNotFoundException {
         log.info("Suppression du collaborateur");
         if (collaborateurRepository.findById(id).isEmpty()){

@@ -33,6 +33,14 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.save(client);
         return dtoMapper.fromClienttoClientDTO(client);
     }
+
+    @Override
+    public ClientDTO oneClient(Long id) {
+        log.info("Récupération d'un client");
+        ClientDTO clientDTO = dtoMapper.fromClienttoClientDTO(clientRepository.findById(id).get());
+        return clientDTO;
+    }
+
     @Override
     public List<ClientDTO> listClients(){
         log.info("Lister clients");

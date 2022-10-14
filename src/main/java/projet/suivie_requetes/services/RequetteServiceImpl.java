@@ -52,6 +52,21 @@ public class RequetteServiceImpl implements RequetteService {
         return requetteDTOS;
     }
 
+    @Override
+    public RequetteDTO getOneRequette(Long id) {
+        Requette requette = requetteRepository.findById(id).get();
+        return dtoMapper.fromRequettetoRequetteDTO(requette);
+    }
+
+    @Override
+    public List<RequetteDTO> searchRequette(String nom) {
+        List<Requette> requette = requetteRepository.searchRequette(nom);
+        List<RequetteDTO> requetteDTOS = requette.stream().map(
+                requette1 -> dtoMapper.fromRequettetoRequetteDTO(requette1))
+                .collect(Collectors.toList());
+        return requetteDTOS;
+    }
+
 
     @Override
     public void deleteRequette(Long id) throws RequetteNotFoundException {
