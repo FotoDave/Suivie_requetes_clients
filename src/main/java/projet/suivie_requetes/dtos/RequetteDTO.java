@@ -19,4 +19,5 @@ public class RequetteDTO {
     private TypeRequette typeRequette;
 
     private Long clientId;
+    private String nomClient;
 }

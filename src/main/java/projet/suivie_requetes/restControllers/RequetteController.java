@@ -22,8 +22,11 @@ public class RequetteController {
     private final RequetteService requetteService;
     private final TacheService tacheService;
 
+    private Long cId = Long.valueOf(1);
+
     @PostMapping("/requettes")
     public RequetteDTO creerRequette(@RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException {
+        requetteDTO.setClientId(cId);
         return requetteService.creerRequette(requetteDTO);
     }
 

@@ -36,7 +36,8 @@ public class CollaborateurController {
     }
 
     @GetMapping("/collaborateurs/search")
-    public List<CollaborateurDTO> searchCollaborateur(@RequestParam String nom){
+    public List<CollaborateurDTO> searchCollaborateur(@RequestParam(name="keyword", defaultValue = "")
+                                                          String nom){
         return collaborateurService.searchCollaborateur("%"+nom+"%");
     }
 

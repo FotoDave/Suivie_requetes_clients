@@ -55,7 +55,11 @@ public class RequetteServiceImpl implements RequetteService {
     @Override
     public RequetteDTO getOneRequette(Long id) {
         Requette requette = requetteRepository.findById(id).get();
-        return dtoMapper.fromRequettetoRequetteDTO(requette);
+        RequetteDTO requetteDTO = dtoMapper.fromRequettetoRequetteDTO(requette);
+        requetteDTO.setNomClient(
+                clientRepository.findById(requetteDTO.getClientId()).get().getNom()
+        );
+        return requetteDTO;
     }
 
     @Override
