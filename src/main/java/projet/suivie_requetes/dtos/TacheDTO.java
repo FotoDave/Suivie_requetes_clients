@@ -16,7 +16,7 @@ public class TacheDTO {
     private Date debut_previsionel;
     private Date fin_previsionel;
     private StatusTache statusTache;
-
+    private Date dateCreation;
 
     private Long requetteId;
     private Long collaborateurId;

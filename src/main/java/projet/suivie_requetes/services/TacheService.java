@@ -2,12 +2,10 @@ package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
 import projet.suivie_requetes.dtos.PlanifierTacheDTO;
+import projet.suivie_requetes.dtos.SearchDTO;
 import projet.suivie_requetes.dtos.TacheDTO;
 import projet.suivie_requetes.entities.Tache;
-import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
-import projet.suivie_requetes.exceptions.RequetteNotFoundException;
-import projet.suivie_requetes.exceptions.TacheAlreadyExistException;
-import projet.suivie_requetes.exceptions.TacheNotFoundException;
+import projet.suivie_requetes.exceptions.*;
 
 import java.util.List;
 
@@ -19,6 +17,7 @@ public interface TacheService {
     List<TacheDTO> listerTache();
     TacheDTO getOneTache(Long id);
     List<TacheDTO> searchTache(String nom);
+    List<TacheDTO> searchTacheByRequetteIdOrStatusTache(String requetteId, String statusTache) throws RequetteNotFoundException, StatusNotFoundException;
 
     TacheDTO planifierTache(PlanifierTacheDTO planifierTacheDTO) throws TacheNotFoundException;
 

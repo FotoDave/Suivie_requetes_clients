@@ -55,9 +55,21 @@ public class DtoMapper {
     public TacheDTO fromTachetoTacheDTO(Tache tache){
         TacheDTO tacheDTO = new TacheDTO();
         BeanUtils.copyProperties(tache, tacheDTO);
-        tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
+        //tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
         tacheDTO.setRequetteId(tache.getRequette().getId());
         return tacheDTO;
+    }
+    public TacheDTO fromTacheNonPlanifietoTacheDTO(Tache tache){
+        TacheDTO tacheDTO = new TacheDTO();
+        BeanUtils.copyProperties(tache, tacheDTO);
+        //tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
+        tacheDTO.setRequetteId(tache.getRequette().getId());
+        return tacheDTO;
+    }
+    public Tache fromTacheDTOtoTacheNonPlanifie(TacheDTO tacheDTO){
+        Tache tache = new Tache();
+        BeanUtils.copyProperties(tacheDTO, tache);
+        return tache;
     }
     public Tache fromTacheDTOtoTache(TacheDTO tacheDTO){
         Tache tache = new Tache();

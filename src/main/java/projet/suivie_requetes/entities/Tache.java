@@ -20,6 +20,7 @@ public class Tache {
     private String observation;
     private Date debutPrevisionel;
     private Date finPrevisionel;
+    private Date dateCreation;
     @Enumerated(EnumType.STRING)
     private StatusTache statusTache;
 

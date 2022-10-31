@@ -5,10 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.*;
-import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
-import projet.suivie_requetes.exceptions.RequetteNotFoundException;
-import projet.suivie_requetes.exceptions.TacheAlreadyExistException;
-import projet.suivie_requetes.exceptions.TacheNotFoundException;
+import projet.suivie_requetes.exceptions.*;
 import projet.suivie_requetes.services.*;
 
 import java.util.List;
@@ -32,6 +29,11 @@ public class TacheController {
     @GetMapping("/taches")
     public List<TacheDTO> listerTache(){
         return tacheService.listerTache();
+    }
+
+    @GetMapping("/taches/searchTache")
+    public List<TacheDTO> searchTacheByRequetteIdOrStatusTache(@RequestParam String requetteId, @RequestParam String statusTache) throws RequetteNotFoundException, StatusNotFoundException {
+        return tacheService.searchTacheByRequetteIdOrStatusTache(requetteId, statusTache);
     }
 
     @GetMapping("/taches/{id}")
