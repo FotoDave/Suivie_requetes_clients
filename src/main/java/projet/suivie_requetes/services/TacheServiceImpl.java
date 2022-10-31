@@ -145,21 +145,19 @@ public class TacheServiceImpl implements TacheService {
     }
 
     @Override
-    public TacheDTO planifierTache(PlanifierTacheDTO planifierTacheDTO) throws TacheNotFoundException {
+    public TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException {
         log.info("Planification de la tache");
-        if (tacheRepository.findById(planifierTacheDTO.getTacheId()).isEmpty()
-                || collaborateurRepository.findById(planifierTacheDTO.getCollaborateurId()).isEmpty()){
+        if (tacheRepository.findById(tacheDTO.getId()).isEmpty()
+                || collaborateurRepository.findById(tacheDTO.getCollaborateurId()).isEmpty()){
             throw new TacheNotFoundException("Tache or Collaborateur not found");
         }
-        Tache tache = tacheRepository.findById(planifierTacheDTO.getTacheId()).get();
-        Collaborateur collaborateur= collaborateurRepository.findById(planifierTacheDTO.getCollaborateurId()).get();
-        tache.setDebutPrevisionel(planifierTacheDTO.getDateDebutPrev());
-        tache.setFinPrevisionel(planifierTacheDTO.getDateFinPrev());
+        Tache tache = tacheRepository.findById(tacheDTO.getId()).get();
+        Collaborateur collaborateur= collaborateurRepository.findById(tacheDTO.getCollaborateurId()).get();
+        tache.setDebutPrevisionel(tacheDTO.getDebut_previsionel());
+        tache.setFinPrevisionel(tacheDTO.getDebut_previsionel());
         tache.setCollaborateur(collaborateur);
         tache.setStatusTache(StatusTache.PLANIFIE);
-
         tacheRepository.save(tache);
-        
         return dtoMapper.fromTachetoTacheDTO(tache);
     }
 

@@ -59,8 +59,8 @@ public class TacheController {
     }
 
     @PostMapping("/planifierTache")
-    public TacheDTO planifierTache(@RequestBody PlanifierTacheDTO planifierTacheDTO) throws TacheNotFoundException {
-        return tacheService.planifierTache(planifierTacheDTO);
+    public TacheDTO planifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
+        return tacheService.planifierTache(tacheDTO);
     }
 
     @PutMapping("/modifierStatusTache/{id}")
