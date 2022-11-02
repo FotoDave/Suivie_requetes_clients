@@ -41,31 +41,29 @@ public class TacheController {
         return tacheService.getOneTache(id);
     }
 
-    @GetMapping("/taches/search")
-    public List<TacheDTO> searchTache(@RequestParam String nom){
-        return tacheService.searchTache("%"+nom+"%");
+    @PutMapping("/taches/modifier")
+    public TacheDTO modifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
+        return tacheService.modifierTache(tacheDTO);
     }
 
-    @PutMapping("/taches/{id}")
-    public TacheDTO updateTache(@PathVariable Long id,
-                                @RequestBody TacheDTO tacheDTO) throws CollaborateurNotFoundException, RequetteNotFoundException, TacheAlreadyExistException {
-        tacheDTO.setId(id);
-        return tacheService.creerTache(tacheDTO);
-    }
-
-    @DeleteMapping("/taches/{id}")
-    public void deleteTache(@PathVariable Long id) throws TacheNotFoundException {
-        tacheService.deleteTache(id);
-    }
-
-    @PostMapping("/planifierTache")
+    @PutMapping("/taches/planifier")
     public TacheDTO planifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
         return tacheService.planifierTache(tacheDTO);
     }
 
-    @PutMapping("/modifierStatusTache/{id}")
+    /*@PutMapping("/modifierStatusTache/{id}")
     public void modifierStatusTache(@PathVariable Long id,
                                     @RequestBody ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException {
         tacheService.modifierStatusTache(modifStatusTacheDTO);
-    }
+    }*/
+
+    /*@GetMapping("/taches/search")
+    public List<TacheDTO> searchTache(@RequestParam String nom){
+        return tacheService.searchTache("%"+nom+"%");
+    }*/
+
+    /*@DeleteMapping("/taches/{id}")
+    public void deleteTache(@PathVariable Long id) throws TacheNotFoundException {
+        tacheService.deleteTache(id);
+    }*/
 }

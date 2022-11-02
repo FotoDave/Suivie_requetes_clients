@@ -10,11 +10,11 @@ import java.util.Date;
 public class TacheDTO {
     private Long id;
     private String intitule;
-    private Date date_debut;
-    private Date date_fin;
+    private Date dateDebut;
+    private Date dateFin;
     private String observation;
-    private Date debut_previsionel;
-    private Date fin_previsionel;
+    private Date debutPrevisionel;
+    private Date finPrevisionel;
     private StatusTache statusTache;
     private Date dateCreation;
 

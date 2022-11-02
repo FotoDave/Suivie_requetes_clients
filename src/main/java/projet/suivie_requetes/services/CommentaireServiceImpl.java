@@ -2,13 +2,13 @@ package projet.suivie_requetes.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.CommentaireDTO;
 import projet.suivie_requetes.dtos.ModifStatusComDTO;
 import projet.suivie_requetes.ennums.StatusCommenttaire;
 import projet.suivie_requetes.entities.Commentaire;
+import projet.suivie_requetes.entities.Tache;
 import projet.suivie_requetes.exceptions.CommentaireNotFoundException;
 import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
@@ -32,12 +32,14 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     @Override
     public CommentaireDTO creerCommentaire(CommentaireDTO commentaireDTO) throws TacheNotFoundException {
-        log.info("Creation du commentaire");
-        commentaireDTO.setStatusCommenttaire(StatusCommenttaire.NON_TRAITE);
         if (tacheRepository.findById(commentaireDTO.getTacheId()).isEmpty()){
             throw new TacheNotFoundException();
         }
+        log.info("Creation du commentaire");
+        commentaireDTO.setStatusCommenttaire(StatusCommenttaire.NON_TRAITE);
+        Tache tache = tacheRepository.findById(commentaireDTO.getTacheId()).get();
         Commentaire commentaire = dtoMapper.fromCommentaireDTOtoCommentaire(commentaireDTO);
+        commentaire.setTache(tache);
         commentaireRepository.save(commentaire);
         return dtoMapper.fromCommentairetoCommentaireDTO(commentaire);
     }
@@ -73,5 +75,26 @@ public class CommentaireServiceImpl implements CommentaireService {
         Commentaire commentaire = commentaireRepository.findById(modifStatusComDTO.getId()).get();
         commentaire.setStatusCommenttaire(modifStatusComDTO.getStatusCommenttaire());
         commentaireRepository.save(commentaire);
+    }
+
+    @Override
+    public CommentaireDTO getOneCommentaire(Long id) throws CommentaireNotFoundException {
+        if(commentaireRepository.findById(id).isEmpty()){
+            throw new CommentaireNotFoundException();
+        }
+        Commentaire commentaire = commentaireRepository.findById(id).get();
+        return dtoMapper.fromCommentairetoCommentaireDTO(commentaire);
+    }
+
+    @Override
+    public List<CommentaireDTO> getListCommentaireParTaches(Long id) throws TacheNotFoundException {
+        if (tacheRepository.findById(id).isEmpty()){
+            throw new TacheNotFoundException();
+        }
+        List<Commentaire> commentaires = commentaireRepository.findCommentairesByTache(id);
+        List<CommentaireDTO> commentaireDTOS = commentaires.stream().map(commentaire ->
+                                                    dtoMapper.fromCommentairetoCommentaireDTO(commentaire))
+                                                    .collect(Collectors.toList());
+        return commentaireDTOS;
     }
 }

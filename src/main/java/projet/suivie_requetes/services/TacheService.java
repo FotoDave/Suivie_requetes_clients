@@ -22,4 +22,6 @@ public interface TacheService {
     TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;
 
     void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException;
+
+    TacheDTO modifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;
 }

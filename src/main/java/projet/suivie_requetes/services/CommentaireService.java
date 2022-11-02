@@ -16,4 +16,8 @@ public interface CommentaireService {
 
 
     void modfierStatusCommentaire(ModifStatusComDTO modifStatusComDTO) throws CommentaireNotFoundException;
+
+    CommentaireDTO getOneCommentaire(Long id) throws CommentaireNotFoundException;
+
+    List<CommentaireDTO> getListCommentaireParTaches(Long id) throws TacheNotFoundException;
 }

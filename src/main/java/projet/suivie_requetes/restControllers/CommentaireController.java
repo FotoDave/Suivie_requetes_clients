@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import projet.suivie_requetes.dtos.ClientDTO;
-import projet.suivie_requetes.dtos.CollaborateurDTO;
-import projet.suivie_requetes.dtos.CommentaireDTO;
-import projet.suivie_requetes.dtos.ModifStatusComDTO;
+import projet.suivie_requetes.dtos.*;
 import projet.suivie_requetes.exceptions.CommentaireNotFoundException;
 import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.services.*;
@@ -40,6 +37,15 @@ public class CommentaireController {
         return commentaireService.listerCommentaire();
     }
 
+    @GetMapping("/commentaires/{id}")
+    public CommentaireDTO getOneCommentaire(@PathVariable Long id) throws CommentaireNotFoundException {
+        return commentaireService.getOneCommentaire(id);
+    }
+
+    @GetMapping("/commentaires/taches/{id}")
+    public List<CommentaireDTO> getListCommentaireParTaches(@PathVariable Long id) throws TacheNotFoundException {
+        return commentaireService.getListCommentaireParTaches(id);
+    }
 
     @PutMapping("/commentaires/{id}")
     public void modfierStatusCommentaire(@PathVariable Long id,

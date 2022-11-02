@@ -38,14 +38,10 @@ public class TacheServiceImpl implements TacheService {
     private final CommentaireRepository commentaireRepository;
     private final RequetteRepository requetteRepository;
     private final TacheRepository tacheRepository;
-    /*private final StatusTache statusTacheEnnum;*/
     private final DtoMapper dtoMapper;
 
     @Override
     public TacheDTO  creerTache(TacheDTO tacheDTO) throws RequetteNotFoundException, TacheAlreadyExistException {
-       /* if (tacheRepository.findById(tacheDTO.getId()).isPresent()){
-            throw new TacheAlreadyExistException("La tache existe deja");
-        }*/
         log.info("Creation d'une Tache");
         tacheDTO.setStatusTache(StatusTache.NON_PLANIFIE);
         tacheDTO.setDateCreation(new Date());
@@ -58,24 +54,35 @@ public class TacheServiceImpl implements TacheService {
         }
         tacheRepository.save(tache);
         return dtoMapper.fromTacheNonPlanifietoTacheDTO(tache);
-        /*Optional<Collaborateur> collaborateur = collaborateurRepository.findById(tacheDTO.getCollaborateurId());
-        if(collaborateur.isEmpty() || requette.isEmpty()){
-            throw new RequetteNotFoundException("Requette ou Collaborateur not found");
-        }else{
-            tache.setCollaborateur(collaborateur.get());
-            tache.setRequette(requette.get());
-            tacheRepository.save(tache);
-        }*/
+    }
+    @Override
+    public TacheDTO modifierTache(TacheDTO tacheDTO) throws TacheNotFoundException {
+        if (tacheRepository.findById(tacheDTO.getId()).isEmpty()){
+            throw new TacheNotFoundException();
+        }
+        log.info("Planification de la tache");
+        Tache tache = tacheRepository.findById(tacheDTO.getId()).get();
+        tache.setIntitule(tacheDTO.getIntitule());
+        tache.setObservation(tacheDTO.getObservation());
+        tacheRepository.save(tache);
+        return dtoMapper.fromTachetoTacheDTO(tache);
     }
 
     @Override
-    public void deleteTache(Long id) throws TacheNotFoundException {
-        log.info("Suppression de la tache");
-        if (tacheRepository.findById(id).isEmpty()){
-            throw new TacheNotFoundException();
-        }else {
-            tacheRepository.deleteById(id);
+    public TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException {
+        log.info("Planification de la tache");
+        if (tacheRepository.findById(tacheDTO.getId()).isEmpty()
+                || collaborateurRepository.findById(tacheDTO.getCollaborateurId()).isEmpty()){
+            throw new TacheNotFoundException("Tache or Collaborateur not found");
         }
+        Tache tache = tacheRepository.findById(tacheDTO.getId()).get();
+        Collaborateur collaborateur= collaborateurRepository.findById(tacheDTO.getCollaborateurId()).get();
+        tache.setDebutPrevisionel(tacheDTO.getDebutPrevisionel());
+        tache.setFinPrevisionel(tacheDTO.getFinPrevisionel());
+        tache.setCollaborateur(collaborateur);
+        tache.setStatusTache(StatusTache.PLANIFIE);
+        tacheRepository.save(tache);
+        return dtoMapper.fromTachetoTacheDTO(tache);
     }
 
     @Override
@@ -95,15 +102,6 @@ public class TacheServiceImpl implements TacheService {
     }
 
     @Override
-    public List<TacheDTO> searchTache(String nom) {
-        List<Tache> taches = tacheRepository.searchTache(nom);
-        List<TacheDTO> tacheDTOS = taches.stream().map(
-                        tache -> dtoMapper.fromTachetoTacheDTO(tache))
-                .collect(Collectors.toList());
-        return tacheDTOS;
-    }
-
-    @Override
     public List<TacheDTO> searchTacheByRequetteIdOrStatusTache(String requetteId, String statusTache) throws RequetteNotFoundException, StatusNotFoundException {
        /* if (requetteRepository.findById(tacheDTO.getRequetteId()).isEmpty()){
             throw new RequetteNotFoundException("idRequtte not found");
@@ -113,53 +111,10 @@ public class TacheServiceImpl implements TacheService {
         List<TacheDTO> tachesDTO = taches.stream().map(
                             tache -> dtoMapper.fromTachetoTacheDTO(tache))
                     .collect(Collectors.toList());
-        /*for (TacheDTO tacheDTO : tachesDTO) {
-            switch (tacheDTO.getStatusTache()) {
-                case NON_PLANIFIE: {
-                    badge = "badge-danger";
-                    break;
-                }
-                case PLANIFIE: {
-                    badge = "badge-warning";
-                    break;
-                }
-                case EN_COURS: {
-                    badge = "badge-primary";
-                    break;
-                }
-                case A_VALIDER_ALPHA: {
-                    badge = "badge-info";
-                    break;
-                }
-                case A_VALIDER_BETA: {
-                    badge = "badge-dark";
-                    break;
-                }
-                case TERMINE: {
-                    badge = "badge-success";
-                    break;
-                }
-            }
-        }*/
+
         return tachesDTO;
     }
 
-    @Override
-    public TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException {
-        log.info("Planification de la tache");
-        if (tacheRepository.findById(tacheDTO.getId()).isEmpty()
-                || collaborateurRepository.findById(tacheDTO.getCollaborateurId()).isEmpty()){
-            throw new TacheNotFoundException("Tache or Collaborateur not found");
-        }
-        Tache tache = tacheRepository.findById(tacheDTO.getId()).get();
-        Collaborateur collaborateur= collaborateurRepository.findById(tacheDTO.getCollaborateurId()).get();
-        tache.setDebutPrevisionel(tacheDTO.getDebut_previsionel());
-        tache.setFinPrevisionel(tacheDTO.getDebut_previsionel());
-        tache.setCollaborateur(collaborateur);
-        tache.setStatusTache(StatusTache.PLANIFIE);
-        tacheRepository.save(tache);
-        return dtoMapper.fromTachetoTacheDTO(tache);
-    }
 
     @Override
     public void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException {
@@ -177,5 +132,22 @@ public class TacheServiceImpl implements TacheService {
         }
         tacheRepository.save(tache);
     }
+    @Override
+    public void deleteTache(Long id) throws TacheNotFoundException {
+        log.info("Suppression de la tache");
+        if (tacheRepository.findById(id).isEmpty()){
+            throw new TacheNotFoundException();
+        }else {
+            tacheRepository.deleteById(id);
+        }
+    }
 
+    @Override
+    public List<TacheDTO> searchTache(String nom) {
+        List<Tache> taches = tacheRepository.searchTache(nom);
+        List<TacheDTO> tacheDTOS = taches.stream().map(
+                        tache -> dtoMapper.fromTachetoTacheDTO(tache))
+                .collect(Collectors.toList());
+        return tacheDTOS;
+    }
 }
