@@ -20,4 +20,5 @@ public class TacheDTO {
 
     private Long requetteId;
     private Long collaborateurId;
+    private String nomCollaborateur;
 }

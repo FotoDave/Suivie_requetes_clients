@@ -98,7 +98,13 @@ public class TacheServiceImpl implements TacheService {
     @Override
     public TacheDTO getOneTache(Long id) {
         Tache taches = tacheRepository.findById(id).get();
-        return dtoMapper.fromTachetoTacheDTO(taches);
+        TacheDTO tacheDTO = dtoMapper.fromTachetoTacheDTO(taches);
+        if(collaborateurRepository.findCollaborateur(taches.getId()).isPresent()){
+            Collaborateur collaborateur = collaborateurRepository.findCollaborateur(taches.getId()).get();
+            tacheDTO.setCollaborateurId(collaborateur.getId());
+            tacheDTO.setNomCollaborateur(collaborateur.getNom());
+        }
+        return tacheDTO;
     }
 
     @Override
