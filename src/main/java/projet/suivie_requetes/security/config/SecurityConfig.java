@@ -15,9 +15,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import projet.suivie_requetes.security.entities.AppUser;
-import projet.suivie_requetes.security.filters.JWTAuthentififcationFIlter;
+import projet.suivie_requetes.security.filters.JWTAuthenticationFIlter;
+import projet.suivie_requetes.security.filters.JWTAuthorizationFilter;
 import projet.suivie_requetes.security.service.SecurityServiceImpl;
+import projet.suivie_requetes.security.service.UserDetailsServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,22 +29,12 @@ import java.util.Collection;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final SecurityServiceImpl securityService;
+    private final UserDetailsServiceImpl userDetailsService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(new UserDetailsService() {
-            /* Permet de spécifier à SpringBoot que mes utilisateurs stockées en BD
+        /* Permet de spécifier à SpringBoot que mes utilisateurs stockées en BD
                 doivent être des utilisateurs de l'application */
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                AppUser appUser = securityService.loadUserByUsername(username);
-                Collection<GrantedAuthority> authorities = new ArrayList<>();
-                appUser.getAppRoles().forEach( r -> {
-                 authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
-                });
-                return new User(appUser.getUsername(), appUser.getPassword(), authorities);
-            }
-        });
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
@@ -50,9 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Permet de spécifier le type d'authentification (Stateless) avec l'utilisation des tokens
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.headers().frameOptions().disable();
-        http.formLogin();
-        http.authorizeHttpRequests().anyRequest().authenticated();
-        http.addFilter(new JWTAuthentififcationFIlter(authenticationManagerBean()));
+        http.authorizeRequests().antMatchers("/refreshToken/**").permitAll()
+                .and()
+                .authorizeRequests().anyRequest().authenticated();
+        //http.formLogin();
+        //http.authorizeHttpRequests().anyRequest().authenticated();
+        http.addFilter(new JWTAuthenticationFIlter(authenticationManagerBean()));
+        http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
