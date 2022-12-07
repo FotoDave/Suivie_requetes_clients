@@ -31,12 +31,14 @@ public class JWTAuthenticationFIlter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                          HttpServletResponse response) throws AuthenticationException {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Headers", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         log.info("Attemm Authentication !!!");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         log.info("Récupération de l'utilisateur et du password");
         log.info(username);
-        log.info(password);
         //Ici on stocke les infos de l'utilisateur dans la classe UsernamePasswordAuthentificationToken
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username,password);
@@ -47,6 +49,8 @@ public class JWTAuthenticationFIlter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                     FilterChain chain, Authentication authResult) throws IOException, ServletException {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         log.info("Succesful Authentication !!!");
         /* Après l'authentification, on récupère les infos de l'utilisateur
         dans l'objet (User) pour pouvoir générer le token */
@@ -78,8 +82,9 @@ public class JWTAuthenticationFIlter extends UsernamePasswordAuthenticationFilte
         /* Ici on crée une hashmap dans laquelle on insère les deux tokens,
         ensuite on la sérialise pour l'envoyer dans le corps de la réponse sous format JSON */
         Map<String,String> idToken = new HashMap<>();
-        idToken.put("acces-token", jwtAccessToken);
-        idToken.put("refresh-token", jwtRefreshToken);
+        idToken.put("acces_token", jwtAccessToken);
+        idToken.put("refresh_token", jwtRefreshToken);
+        idToken.put("username", (String) user.getUsername());
         response.setContentType("application/json");
         //Serialisation du format json pour l'envoie des tokens dans la reponse
         new ObjectMapper().writeValue(response.getOutputStream(), idToken);

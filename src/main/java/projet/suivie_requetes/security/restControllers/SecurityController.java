@@ -87,8 +87,9 @@ public class SecurityController {
                         .sign(algorithm);
 
                 Map<String,String> idToken = new HashMap<>();
-                idToken.put("acces-token", jwtAccessToken);
-                idToken.put("refresh-token", jwt);
+                idToken.put("acces_token", jwtAccessToken);
+                idToken.put("refresh_token", jwt);
+                idToken.put("username", appUser.getUsername());
                 response.setContentType("application/json");
                 new ObjectMapper().writeValue(response.getOutputStream(), idToken);
             }
