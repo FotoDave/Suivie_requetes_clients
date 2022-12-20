@@ -4,6 +4,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import projet.suivie_requetes.dtos.*;
 import projet.suivie_requetes.entities.*;
+import projet.suivie_requetes.security.dtos.AppUserDto;
+import projet.suivie_requetes.security.entities.AppUser;
 
 @Service
 public class DtoMapper {
@@ -75,5 +77,17 @@ public class DtoMapper {
         Tache tache = new Tache();
         BeanUtils.copyProperties(tacheDTO, tache);
         return tache;
+    }
+
+    public AppUser fromAppUserDtoToAppUser(AppUserDto appUserDto){
+        AppUser appUser = new AppUser();
+        BeanUtils.copyProperties(appUserDto,appUser);
+        return appUser;
+    }
+
+    public AppUserDto fromAppUserToAppUserDto(AppUser appUser){
+        AppUserDto appUserDto = new AppUserDto();
+        BeanUtils.copyProperties(appUser, appUserDto);
+        return appUserDto;
     }
 }

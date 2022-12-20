@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.*;
 import projet.suivie_requetes.exceptions.*;
@@ -23,37 +24,37 @@ public class TacheController {
     private final TacheService tacheService;
 
     @PostMapping("/taches")
-    @PostAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAuthority('Admin')")
     public TacheDTO creerTache(@RequestBody TacheDTO tacheDTO) throws CollaborateurNotFoundException, RequetteNotFoundException, TacheAlreadyExistException {
         return tacheService.creerTache(tacheDTO);
     }
 
     @GetMapping("/taches")
-    @PostAuthorize("hasAuthority('Collaborateur')")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
     public List<TacheDTO> listerTache(){
         return tacheService.listerTache();
     }
 
     @GetMapping("/taches/searchTache")
-    @PostAuthorize("hasAuthority('Collaborateur')")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
     public List<TacheDTO> searchTacheByRequetteIdOrStatusTache(@RequestParam String requetteId, @RequestParam String statusTache) throws RequetteNotFoundException, StatusNotFoundException {
         return tacheService.searchTacheByRequetteIdOrStatusTache(requetteId, statusTache);
     }
 
     @GetMapping("/taches/{id}")
-    @PostAuthorize("hasAuthority('Collaborateur')")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
     public TacheDTO getOneTache(@PathVariable Long id){
         return tacheService.getOneTache(id);
     }
 
     @PutMapping("/taches/modifier")
-    @PostAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAuthority('Admin')")
     public TacheDTO modifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
         return tacheService.modifierTache(tacheDTO);
     }
 
     @PutMapping("/taches/planifier")
-    @PostAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAuthority('Admin')")
     public TacheDTO planifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
         return tacheService.planifierTache(tacheDTO);
     }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.CollaborateurDTO;
 import projet.suivie_requetes.exceptions.CollaborateurNotFoundException;
@@ -23,18 +24,18 @@ public class CollaborateurController {
     private final TacheService tacheService;
 
     @PostMapping("/collaborateurs")
-    @PostAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAuthority('Admin')")
     public CollaborateurDTO creerCollaborateur(@RequestBody CollaborateurDTO collaborateurDTO){
         return collaborateurService.creerCollaborateur(collaborateurDTO);
     }
     @GetMapping("/collaborateurs")
-    @PostAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAuthority('Admin')")
     public List<CollaborateurDTO> listCollaborateurs(){
         return collaborateurService.listCollaborateurs();
     }
 
     @GetMapping("/collaborateurs/{id}")
-    @PostAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAnyAuthority('Admin','Collaborateur')")
     public CollaborateurDTO getOneCollaborateur(@PathVariable Long id){
         return collaborateurService.getOneCollaborateur(id);
     }
