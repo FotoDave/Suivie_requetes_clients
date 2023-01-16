@@ -2,13 +2,15 @@ package projet.suivie_requetes.restControllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.ClientDTO;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;
-import projet.suivie_requetes.services.*;
+import projet.suivie_requetes.services.clientService.ClientService;
+import projet.suivie_requetes.services.collaborateurService.CollaborateurService;
+import projet.suivie_requetes.services.commentaireService.CommentaireService;
+import projet.suivie_requetes.services.requetteService.RequetteService;
+import projet.suivie_requetes.services.tacheService.TacheService;
 
 import java.util.List;
 

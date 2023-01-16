@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import projet.suivie_requetes.ennums.StatusCommenttaire;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -16,6 +17,10 @@ public class Commentaire {
     @Enumerated(EnumType.STRING)
     private StatusCommenttaire statusCommenttaire;
 
+    @OneToMany(mappedBy = "commentaire")
+    private List<FileUpload> fileUploadList;
+
     @ManyToOne
+    @JoinTable(name = "tache_id")
     private Tache tache;
 }
