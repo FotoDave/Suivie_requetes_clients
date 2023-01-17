@@ -1,4 +1,4 @@
-package projet.suivie_requetes.services.requetteService;
+package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.RequetteDTO;
 import projet.suivie_requetes.entities.Requette;

@@ -1,4 +1,4 @@
-package projet.suivie_requetes.services.collaborateurService;
+package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.CollaborateurDTO;
 import projet.suivie_requetes.entities.Collaborateur;

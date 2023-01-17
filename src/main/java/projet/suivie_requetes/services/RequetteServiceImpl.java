@@ -1,4 +1,4 @@
-package projet.suivie_requetes.services.requetteService;
+package projet.suivie_requetes.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package projet.suivie_requetes.services.tacheService;
+package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
 import projet.suivie_requetes.dtos.PlanifierTacheDTO;

@@ -25,10 +25,6 @@ public class Requette {
 
     @OneToMany(mappedBy = "requette")
     private List<Tache> tacheList;
-    @OneToMany(mappedBy = "requette")
-    private List<FileUpload> fileUploadList;
-
     @ManyToOne
-    @JoinTable(name = "client_id")
     private Client client;
 }

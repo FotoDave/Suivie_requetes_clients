@@ -1,4 +1,4 @@
-package projet.suivie_requetes.services.clientService;
+package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.ClientDTO;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;

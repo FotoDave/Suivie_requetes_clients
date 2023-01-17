@@ -1,4 +1,4 @@
-package projet.suivie_requetes.services.commentaireService;
+package projet.suivie_requetes.services;
 
 import projet.suivie_requetes.dtos.CommentaireDTO;
 import projet.suivie_requetes.dtos.ModifStatusComDTO;

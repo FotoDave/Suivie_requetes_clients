@@ -1,10 +1,13 @@
-package projet.suivie_requetes.services.tacheService;
+package projet.suivie_requetes.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
+import projet.suivie_requetes.dtos.PlanifierTacheDTO;
+import projet.suivie_requetes.dtos.SearchDTO;
 import projet.suivie_requetes.dtos.TacheDTO;
 import projet.suivie_requetes.ennums.StatusTache;
 import projet.suivie_requetes.entities.Collaborateur;
