@@ -39,6 +39,11 @@
             <artifactId>java-jwt</artifactId>
             <version>4.2.1</version>
         </dependency>
+        <dependency>
+            <!--Dépendence permettant d'attribuer un id aux differents fichiers uploadés-->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
 
         <dependency>

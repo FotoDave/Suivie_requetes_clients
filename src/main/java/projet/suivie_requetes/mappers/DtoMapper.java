@@ -90,4 +90,16 @@ public class DtoMapper {
         BeanUtils.copyProperties(appUser, appUserDto);
         return appUserDto;
     }
+
+    public FileUpload fromFileUploadDtoToFileUpload(FileUploadDTO fileUploadDTO){
+        FileUpload fileUpload = new FileUpload();
+        BeanUtils.copyProperties(fileUploadDTO, fileUpload);
+        return fileUpload;
+    }
+
+    public FileUploadDTO fromFileUploadToFileUploadDto(FileUpload fileUpload){
+        FileUploadDTO fileUploadDTO = new FileUploadDTO();
+        BeanUtils.copyProperties(fileUpload, fileUploadDTO);
+        return fileUploadDTO;
+    }
 }

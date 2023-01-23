@@ -46,20 +46,30 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                     String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
                     log.info("roles : "+roles);
                     Collection<GrantedAuthority> authorities = new ArrayList<>();
+                    log.info("////////////");
+                    log.info("Verification 1");
                     for(String r : roles){
                         authorities.add(new SimpleGrantedAuthority(r));
                     }
+                    log.info("////////////");
+                    log.info("Verification 2");
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(username, null, authorities);
+                    log.info("////////////");
+                    log.info("Verification 3");
                     //Ici, après avoir récupéré l'utilisateur et ses roles, on l'authentifie une fois.
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    log.info("////////////");
+                    log.info("Verification 4");
                     //Ensuite on passe au filtre suivant
                     filterChain.doFilter(request,response);
+                    log.info("////////////");
+                    log.info("Verification 5");
                 }
                 catch (Exception e){
                     log.info("Erreur lors de la verification de l'utilisateur");
                     response.setHeader("error-message", e.getMessage());
-                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.sendError(HttpServletResponse.SC_FORBIDDEN);
                 }
             }
             else {
