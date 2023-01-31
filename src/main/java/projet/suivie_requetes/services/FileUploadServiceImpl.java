@@ -2,6 +2,7 @@ package projet.suivie_requetes.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -26,6 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -41,15 +43,19 @@ public class FileUploadServiceImpl implements FileUploadService {
     private final FileUploadRepository fileUploadRepository;
     private final DtoMapper dtoMapper;
     @Override
-    public FileUploadDTO uploadFile(MultipartFile multipartFile) throws IOException, TacheNotFoundException, RequetteNotFoundException, CommentaireNotFoundException {
+    public FileUploadDTO uploadFile(MultipartFile file) throws IOException, TacheNotFoundException, RequetteNotFoundException, CommentaireNotFoundException {
         log.info("Enregistrement fichiers à uploader...");
+        //byte[] bytes = multipartFile.getBytes();
+        //Path directory = Paths.get("/home/wallace/Documents/Prog_Spring/Suivie_requetes/Files-Uploaded");
+        //String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        //Files.write(directory, bytes);
         FileUploadDTO fileUploadDTO = new FileUploadDTO();
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        fileUploadDTO.setSize(multipartFile.getSize());
+        String fileName = file.getOriginalFilename();
+        fileUploadDTO.setSize(file.getSize());
         Path directory = Paths.get("/home/wallace/Documents/Prog_Spring/Suivie_requetes/Files-Uploaded");
         fileUploadDTO.setFileCode(RandomStringUtils.randomAlphanumeric(10));
         try {
-            InputStream inputStream = multipartFile.getInputStream();
+            InputStream inputStream = file.getInputStream();
             Path filePath = directory.resolve(fileUploadDTO.getFileCode()+"-"+fileName);
             fileUploadDTO.setFileName(String.valueOf(filePath.getFileName()));
             log.info("Récupération du fichier");
@@ -58,7 +64,25 @@ public class FileUploadServiceImpl implements FileUploadService {
         }catch (Exception exception){
             throw new IOException("Erreur d'enregistrement du fichier : "+fileUploadDTO.getFileName(), exception);
         }
-
+        /*for(FileItem item : fileItems){
+            if(item.isFormField()){
+                String fileName = item.getFieldName();
+                log.info(fileName);
+                fileUploadDTO.setSize(item.getSize());
+                Path directory = Paths.get("/home/wallace/Documents/Prog_Spring/Suivie_requetes/Files-Uploaded");
+                fileUploadDTO.setFileCode(RandomStringUtils.randomAlphanumeric(10));
+                try {
+                    InputStream inputStream = item.getInputStream();
+                    Path filePath = directory.resolve(fileUploadDTO.getFileCode()+"-"+fileName);
+                    fileUploadDTO.setFileName(String.valueOf(filePath.getFileName()));
+                    log.info("Récupération du fichier");
+                    Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+                    inputStream.close();
+                }catch (Exception exception){
+                    throw new IOException("Erreur d'enregistrement du fichier : "+fileUploadDTO.getFileName(), exception);
+                }
+            }
+        }*/
         FileUpload fileUpload = dtoMapper.fromFileUploadDtoToFileUpload(fileUploadDTO);
         if(fileUploadDTO.getTacheId() != null){
             if (tacheRepository.findById(fileUploadDTO.getTacheId()).isPresent()){

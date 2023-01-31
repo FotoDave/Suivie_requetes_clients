@@ -2,6 +2,9 @@ package projet.suivie_requetes.restControllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,7 +19,9 @@ import projet.suivie_requetes.exceptions.RequetteNotFoundException;
 import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.services.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -29,12 +34,13 @@ public class FileUploadController {
     private final RequetteService requetteService;
     private final TacheService tacheService;
     private final FileUploadService fileUploadService;
+    private List<FileItem> fileItems;
 
     @PostMapping("/file")
     @PreAuthorize("hasAnyAuthority('Admin', 'Collaborateur', 'Client')")
-    public ResponseEntity<FileUploadDTO> upload(@RequestParam("file") MultipartFile multipartFile)
+    public ResponseEntity<FileUploadDTO> upload(@RequestParam("file") MultipartFile file)
             throws IOException, CommentaireNotFoundException, TacheNotFoundException, RequetteNotFoundException {
-        return new ResponseEntity<>(fileUploadService.uploadFile(multipartFile), HttpStatus.OK);
+        return new ResponseEntity<>(fileUploadService.uploadFile(file), HttpStatus.OK);
     }
 
     @GetMapping("/files/{fileCode}")

@@ -68,8 +68,10 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                 }
                 catch (Exception e){
                     log.info("Erreur lors de la verification de l'utilisateur");
+                    //log.info(e.toString());
                     response.setHeader("error-message", e.getMessage());
                     response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                    throw e;
                 }
             }
             else {
