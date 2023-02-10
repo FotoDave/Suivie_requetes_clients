@@ -12,8 +12,10 @@ import java.io.IOException;
 import java.util.List;
 
 public interface FileUploadService {
-    FileUploadDTO uploadFile(MultipartFile file)
+    FileUploadDTO uploadFile(MultipartFile file, FileUploadDTO fileUploadDTO)
             throws IOException, TacheNotFoundException, RequetteNotFoundException, CommentaireNotFoundException;
 
     Resource getFileAsResource(String fileCode) throws IOException;
+
+    FileUploadDTO getOneUploadFile(FileUploadDTO fileUploadDTO) throws TacheNotFoundException, RequetteNotFoundException, CommentaireNotFoundException;
 }

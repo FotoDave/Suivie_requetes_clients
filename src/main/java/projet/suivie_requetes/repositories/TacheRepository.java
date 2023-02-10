@@ -10,7 +10,10 @@ import projet.suivie_requetes.entities.Tache;
 import java.util.List;
 
 public interface TacheRepository extends JpaRepository<Tache, Long> {
-    @Query("select t from Tache t where t.intitule like :nom")
+    @Query("select t " +
+            "from Tache t " +
+            "where t.intitule " +
+            "like :nom")
     List<Tache> searchTache(@Param("nom") String nom);
 
     @Query("select t from Tache t " +
@@ -19,7 +22,9 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
             "order by t.dateCreation desc")
     List<Tache> findTachesByRequetteOrStatus(@Param("id") Long id, @Param("status") StatusTache status);
 
-    @Query("select t from Tache t order by t.dateCreation desc")
+    @Query("select t " +
+            "from Tache t " +
+            "order by t.dateCreation desc")
     List<Tache> listeTacheOrdonnee();
     /*List<Tache> findAllByRequetteIdOrStatusTache(@Param("id") Long id, @Param("status") String status);*/
 }

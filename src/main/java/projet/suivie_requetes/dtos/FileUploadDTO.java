@@ -12,4 +12,6 @@ public class FileUploadDTO {
     private Long requetteId;
     private Long tacheId;
     private Long commentaireId;
+    private String element;
+    private Long elementId;
 }

@@ -38,9 +38,35 @@ public class FileUploadController {
 
     @PostMapping("/file")
     @PreAuthorize("hasAnyAuthority('Admin', 'Collaborateur', 'Client')")
-    public ResponseEntity<FileUploadDTO> upload(@RequestParam("file") MultipartFile file)
+    public ResponseEntity<FileUploadDTO> upload(@RequestParam("file") MultipartFile file,
+                                                @RequestParam("element") String element,
+                                                @RequestParam("id") String id)
             throws IOException, CommentaireNotFoundException, TacheNotFoundException, RequetteNotFoundException {
-        return new ResponseEntity<>(fileUploadService.uploadFile(file), HttpStatus.OK);
+        FileUploadDTO fileUploadDTO = new FileUploadDTO();
+        fileUploadDTO.setElement(element);
+        fileUploadDTO.setElementId(Long.valueOf(id));
+        return new ResponseEntity<>(fileUploadService.uploadFile(file, fileUploadDTO), HttpStatus.OK);
+    }
+
+    @GetMapping("/file")
+    @PreAuthorize("hasAnyAuthority('Admin', 'Collaborateur', 'Client')")
+    public FileUploadDTO getOneFileUpload(@RequestParam("id") String id,
+                                          @RequestParam("element") String element)
+            throws CommentaireNotFoundException, TacheNotFoundException, RequetteNotFoundException {
+        FileUploadDTO fileUploadDTO = new FileUploadDTO();
+        switch (element){
+            case "T":
+                fileUploadDTO.setTacheId(Long.valueOf(id));
+                break;
+            case "R":
+                fileUploadDTO.setRequetteId(Long.valueOf(id));
+                break;
+            case "C":
+                fileUploadDTO.setCommentaireId(Long.valueOf(id));
+                break;
+        }
+        fileUploadDTO.setElement(element);
+        return fileUploadService.getOneUploadFile(fileUploadDTO);
     }
 
     @GetMapping("/files/{fileCode}")
@@ -63,4 +89,5 @@ public class FileUploadController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, headerValue)
                 .body(resource);
     }
+
 }

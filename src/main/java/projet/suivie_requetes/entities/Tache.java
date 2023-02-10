@@ -24,10 +24,12 @@ public class Tache {
     @Enumerated(EnumType.STRING)
     private StatusTache statusTache;
 
-    @ManyToOne
-    private Requette requette;
     @OneToMany(mappedBy = "tache")
     private List<Commentaire> commentaireList;
+    @OneToMany(mappedBy = "requette")
+    private List<FileUpload> fileUploadList;
+    @ManyToOne
+    private Requette requette;
     @ManyToOne
     private Collaborateur collaborateur;
 }

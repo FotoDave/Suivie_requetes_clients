@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import projet.suivie_requetes.ennums.StatusCommenttaire;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -18,4 +19,6 @@ public class Commentaire {
 
     @ManyToOne
     private Tache tache;
+    @OneToMany(mappedBy = "requette")
+    private List<FileUpload> fileUploadList;
 }

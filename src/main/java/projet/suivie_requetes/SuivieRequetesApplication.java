@@ -9,7 +9,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import projet.suivie_requetes.exceptions.RoleNotFoundException;
+import projet.suivie_requetes.security.dtos.AppUserDto;
 import projet.suivie_requetes.security.service.SecurityServiceImpl;
+
+import java.util.ArrayList;
 
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -23,6 +27,17 @@ public class SuivieRequetesApplication {
     @Bean
     CommandLineRunner commandLineRunner(SecurityServiceImpl service) {
         return args -> {
+            ArrayList<String> roles = new ArrayList<String>();
+            roles.add("Admin");
+            AppUserDto userDto = new AppUserDto();
+            userDto.setUsername("Admin");
+            userDto.setPassword("1234");
+            userDto.setRoles(roles);
+            try {
+                service.addNewUser(userDto);
+            } catch (RoleNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             service.listUsers();
         };
     }

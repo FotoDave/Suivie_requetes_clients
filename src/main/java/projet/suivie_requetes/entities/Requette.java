@@ -25,6 +25,8 @@ public class Requette {
 
     @OneToMany(mappedBy = "requette")
     private List<Tache> tacheList;
+    @OneToMany(mappedBy = "requette")
+    private List<FileUpload> fileUploadList;
     @ManyToOne
     private Client client;
 }
