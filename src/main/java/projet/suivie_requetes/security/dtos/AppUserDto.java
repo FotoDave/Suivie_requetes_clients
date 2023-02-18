@@ -10,5 +10,7 @@ public class AppUserDto {
     private Long id;
     private String username;
     private String password;
+    private Long clientId;
+    private String nomClient;
     private ArrayList<String> roles;
 }

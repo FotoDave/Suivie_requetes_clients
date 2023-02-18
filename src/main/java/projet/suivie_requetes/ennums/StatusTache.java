@@ -6,5 +6,6 @@ public enum StatusTache {
     EN_COURS,
     A_VALIDER_ALPHA,
     A_VALIDER_BETA,
-    TERMINE
+    TERMINE,
+    DEPLOYE
 }

@@ -15,6 +15,7 @@ import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,16 +33,30 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     @Override
     public CommentaireDTO creerCommentaire(CommentaireDTO commentaireDTO) throws TacheNotFoundException {
+        log.info("Creation du commentaire");
         if (tacheRepository.findById(commentaireDTO.getTacheId()).isEmpty()){
             throw new TacheNotFoundException();
         }
-        log.info("Creation du commentaire");
         commentaireDTO.setStatusCommenttaire(StatusCommenttaire.NON_TRAITE);
         Tache tache = tacheRepository.findById(commentaireDTO.getTacheId()).get();
         Commentaire commentaire = dtoMapper.fromCommentaireDTOtoCommentaire(commentaireDTO);
         commentaire.setTache(tache);
         commentaireRepository.save(commentaire);
         return dtoMapper.fromCommentairetoCommentaireDTO(commentaire);
+    }
+
+    @Override
+    public CommentaireDTO changeStatusCommentaire(Long id) throws CommentaireNotFoundException {
+        log.info("Changement du statut du commentaire");
+        Optional<Commentaire> optionalCommentaire = commentaireRepository.findById(id);
+        if (optionalCommentaire.isPresent()){
+            Commentaire commentaire = optionalCommentaire.get();
+            commentaire.setStatusCommenttaire(StatusCommenttaire.TRAITE);
+            commentaireRepository.save(commentaire);
+            return dtoMapper.fromCommentairetoCommentaireDTO(commentaire);
+        }else {
+            throw new CommentaireNotFoundException("Commentaire not found...");
+        }
     }
 
     @Override

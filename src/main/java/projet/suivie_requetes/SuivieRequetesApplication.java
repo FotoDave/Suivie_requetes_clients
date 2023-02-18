@@ -24,7 +24,7 @@ public class SuivieRequetesApplication {
         SpringApplication.run(SuivieRequetesApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     CommandLineRunner commandLineRunner(SecurityServiceImpl service) {
         return args -> {
             ArrayList<String> roles = new ArrayList<String>();
@@ -40,7 +40,7 @@ public class SuivieRequetesApplication {
             }
             service.listUsers();
         };
-    }
+    }*/
 
     @Bean
     PasswordEncoder passwordEncoder(){

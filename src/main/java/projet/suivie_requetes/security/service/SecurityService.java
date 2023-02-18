@@ -1,5 +1,6 @@
 package projet.suivie_requetes.security.service;
 
+import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.exceptions.RoleNotFoundException;
 import projet.suivie_requetes.exceptions.UserNotFoundException;
 import projet.suivie_requetes.security.dtos.AppUserDto;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface SecurityService {
     //AppUser addNewUser(AppUser appUser);
 
-    AppUserDto addNewUser(AppUserDto appUserDto) throws RoleNotFoundException;
+    AppUserDto addNewUser(AppUserDto appUserDto) throws RoleNotFoundException, ClientNotFoundException, UserNotFoundException;
 
     AppRole addNewRole(AppRole appRole);
     //void addRoleToUser(String userName, String roleName);
@@ -20,6 +21,9 @@ public interface SecurityService {
     void addRoleToUser(String userName, ArrayList<String> roleName) throws UserNotFoundException;
 
     AppUser loadUserByUsername(String username);
+
+    String connectedUser() throws ClientNotFoundException, UserNotFoundException;
+
     List<AppUserDto> listUsers();
 
     void editUser(AppUserDto appUserDto) throws UserNotFoundException, RoleNotFoundException;

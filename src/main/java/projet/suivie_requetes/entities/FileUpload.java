@@ -19,12 +19,12 @@ public class FileUpload {
     private String fileCode;
     private Long size;
     @ManyToOne
-    //@JoinTable(name = "requette_id")
+    @JoinColumn(name = "file.requette_id")
     private Requette requette;
     @ManyToOne
-    //@JoinTable(name = "commentaire_id")
+    @JoinColumn(name = "file.commentaire_id")
     private Commentaire commentaire;
     @ManyToOne
-    //@JoinTable(name = "tache_id")
+    @JoinColumn(name = "file.tache_id")
     private Tache tache;
 }

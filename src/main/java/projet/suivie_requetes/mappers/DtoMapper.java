@@ -45,7 +45,9 @@ public class DtoMapper {
     public RequetteDTO fromRequettetoRequetteDTO(Requette requette){
         RequetteDTO requetteDTO = new RequetteDTO();
         BeanUtils.copyProperties(requette, requetteDTO);
-        requetteDTO.setClientId(requette.getClient().getId());
+        if (requette.getAppUser() != null){
+            requetteDTO.setUsername(requette.getAppUser().getUsername());
+        }
         return requetteDTO;
     }
     public Requette fromRequetteDTOtoRequette(RequetteDTO requetteDTO){
@@ -57,8 +59,11 @@ public class DtoMapper {
     public TacheDTO fromTachetoTacheDTO(Tache tache){
         TacheDTO tacheDTO = new TacheDTO();
         BeanUtils.copyProperties(tache, tacheDTO);
-        //tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
-        tacheDTO.setRequetteId(tache.getRequette().getId());
+        if (tache.getCollaborateur() != null && tache.getRequette() != null){
+            tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
+            tacheDTO.setNomCollaborateur(tache.getCollaborateur().getNom());
+            tacheDTO.setRequetteId(tache.getRequette().getId());
+        }
         return tacheDTO;
     }
     public TacheDTO fromTacheNonPlanifietoTacheDTO(Tache tache){
@@ -88,6 +93,10 @@ public class DtoMapper {
     public AppUserDto fromAppUserToAppUserDto(AppUser appUser){
         AppUserDto appUserDto = new AppUserDto();
         BeanUtils.copyProperties(appUser, appUserDto);
+        if (appUser.getClient() != null){
+            appUserDto.setClientId(appUser.getClient().getId());
+            appUserDto.setNomClient(appUser.getClient().getNom());
+        }
         return appUserDto;
     }
 

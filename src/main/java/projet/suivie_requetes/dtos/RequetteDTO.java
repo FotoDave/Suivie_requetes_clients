@@ -2,7 +2,9 @@ package projet.suivie_requetes.dtos;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 import projet.suivie_requetes.ennums.TypeRequette;
+import projet.suivie_requetes.entities.Requette;
 
 import java.util.Date;
 
@@ -18,6 +20,13 @@ public class RequetteDTO {
     private String observation;
     private TypeRequette typeRequette;
 
-    private Long clientId;
+    private String username;
     private String nomClient;
+    /*public static RequetteDTO mapFromRequette(Requette requette){
+        RequetteDTO requetteDTO = new RequetteDTO();
+        BeanUtils.copyProperties(requette, requetteDTO);
+        requetteDTO.setUsername(requette.getAppUser().getUsername());
+        //requetteDTO.setClientId(requette.getClient().getId());
+        return requetteDTO;
+    }*/
 }

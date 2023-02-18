@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.exceptions.RoleNotFoundException;
 import projet.suivie_requetes.exceptions.UserNotFoundException;
 import projet.suivie_requetes.security.config.JWTUtil;
@@ -38,7 +39,7 @@ public class SecurityController {
 
     @PostMapping("/users")
     @PreAuthorize("hasAuthority('Admin')")
-    public AppUserDto saveUser(@RequestBody AppUserDto user) throws RoleNotFoundException {
+    public AppUserDto saveUser(@RequestBody AppUserDto user) throws RoleNotFoundException, ClientNotFoundException, UserNotFoundException {
         log.info("Creation de l'utilisateur de l'utilisateur");
         return securityService.addNewUser(user);
     }
@@ -50,11 +51,17 @@ public class SecurityController {
         return securityService.addNewRole(appRole);
     }*/
 
-    @PutMapping("/editUser/")
+    @PutMapping("/editUser")
     @PreAuthorize("hasAuthority('Admin')")
     public void editUser(@RequestBody AppUserDto appUserDto) throws UserNotFoundException, RoleNotFoundException {
         log.info("Modification de l'utilisateur et ajout d'un nouveau role");
         securityService.editUser(appUserDto);
+    }
+    @GetMapping("/connectedUser")
+    @PreAuthorize("hasAnyAuthority('Client','Admin','Collaborateur')")
+    public String connectedUser() throws UserNotFoundException {
+        log.info("Affichage de l'utilisateur connecté");
+        return securityService.connectedUser();
     }
 
     /*@PutMapping("/removeRole")

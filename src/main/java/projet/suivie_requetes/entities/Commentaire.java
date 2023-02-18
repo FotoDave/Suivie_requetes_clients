@@ -18,6 +18,7 @@ public class Commentaire {
     private StatusCommenttaire statusCommenttaire;
 
     @ManyToOne
+    @JoinColumn(name = "commentaire.tache_id")
     private Tache tache;
     @OneToMany(mappedBy = "requette")
     private List<FileUpload> fileUploadList;

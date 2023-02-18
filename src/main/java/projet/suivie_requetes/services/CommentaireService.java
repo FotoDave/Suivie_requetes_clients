@@ -10,6 +10,8 @@ import java.util.List;
 public interface CommentaireService {
     CommentaireDTO creerCommentaire(CommentaireDTO commentaireDTO) throws TacheNotFoundException;
 
+    CommentaireDTO changeStatusCommentaire(Long id) throws CommentaireNotFoundException;
+
     void deleteCommentaire(Long id) throws CommentaireNotFoundException;
 
     List<CommentaireDTO> listerCommentaire() throws CommentaireNotFoundException;

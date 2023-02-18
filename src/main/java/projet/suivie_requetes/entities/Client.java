@@ -3,6 +3,7 @@ package projet.suivie_requetes.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import projet.suivie_requetes.security.entities.AppUser;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,5 +18,5 @@ public class Client {
     private String tel;
 
     @OneToMany(mappedBy = "client")
-    private List<Requette> requetteList;
+    private List<AppUser> appUserList;
 }

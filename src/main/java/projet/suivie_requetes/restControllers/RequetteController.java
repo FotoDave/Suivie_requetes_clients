@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import projet.suivie_requetes.dtos.RequetteDTO;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.exceptions.RequetteNotFoundException;
+import projet.suivie_requetes.exceptions.UserNotFoundException;
 import projet.suivie_requetes.services.*;
 
 import java.util.List;
@@ -24,18 +25,16 @@ public class RequetteController {
     private final RequetteService requetteService;
     private final TacheService tacheService;
 
-    private Long cId = Long.valueOf(1);
 
     @PostMapping("/requettes")
     @PreAuthorize("hasAnyAuthority('Client','Admin')")
     public RequetteDTO creerRequette(@RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException {
-        requetteDTO.setClientId(cId);
         return requetteService.creerRequette(requetteDTO);
     }
 
     @GetMapping("/requettes")
     @PreAuthorize("hasAnyAuthority('Client','Admin','Collaborateur')")
-    public List<RequetteDTO> listeRequettes(){
+    public List<RequetteDTO> listeRequettes() throws ClientNotFoundException, UserNotFoundException {
         return requetteService.listerRequette();
     }
 

@@ -4,13 +4,14 @@ import projet.suivie_requetes.dtos.RequetteDTO;
 import projet.suivie_requetes.entities.Requette;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.exceptions.RequetteNotFoundException;
+import projet.suivie_requetes.exceptions.UserNotFoundException;
 
 import java.util.List;
 
 public interface RequetteService {
     RequetteDTO creerRequette(RequetteDTO requetteDTO) throws ClientNotFoundException;
 
-    List<RequetteDTO> listerRequette();
+    List<RequetteDTO> listerRequette() throws ClientNotFoundException, UserNotFoundException;
     RequetteDTO getOneRequette(Long id);
     List<RequetteDTO> searchRequette(String nom);
 

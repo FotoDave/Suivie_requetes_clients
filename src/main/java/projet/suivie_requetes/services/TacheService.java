@@ -14,6 +14,8 @@ public interface TacheService {
 
     void deleteTache(Long id) throws TacheNotFoundException;
 
+    TacheDTO modifierStatutTache(TacheDTO tacheDTO) throws TacheNotFoundException, RequetteNotFoundException;
+
     List<TacheDTO> listerTache();
     TacheDTO getOneTache(Long id);
     List<TacheDTO> searchTache(String nom);
@@ -21,7 +23,7 @@ public interface TacheService {
 
     TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;
 
-    void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException;
+    //void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException;
 
     TacheDTO modifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;
 }
