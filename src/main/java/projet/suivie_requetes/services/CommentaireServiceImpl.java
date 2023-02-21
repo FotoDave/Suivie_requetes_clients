@@ -8,12 +8,14 @@ import projet.suivie_requetes.dtos.CommentaireDTO;
 import projet.suivie_requetes.dtos.ModifStatusComDTO;
 import projet.suivie_requetes.ennums.StatusCommenttaire;
 import projet.suivie_requetes.entities.Commentaire;
+import projet.suivie_requetes.entities.FileUpload;
 import projet.suivie_requetes.entities.Tache;
 import projet.suivie_requetes.exceptions.CommentaireNotFoundException;
 import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,6 +30,7 @@ public class CommentaireServiceImpl implements CommentaireService {
     private final CommentaireRepository commentaireRepository;
     private final RequetteRepository requetteRepository;
     private final TacheRepository tacheRepository;
+    private final FileUploadRepository fileUploadRepository;
     private final DtoMapper dtoMapper;
 
 
@@ -75,6 +78,14 @@ public class CommentaireServiceImpl implements CommentaireService {
         if (commentaires.isEmpty()){
             throw new CommentaireNotFoundException();
         }
+        for (Commentaire commentaire : commentaires){
+            if (fileUploadRepository.findFileUploadByCommentaireId(commentaire.getId()).isEmpty()){
+                log.info("La liste des fichiers pour ce commentaire est vide....");
+            }else {
+                List<FileUpload> fileUploadByCommentaireId = fileUploadRepository.findFileUploadByCommentaireId(commentaire.getId());
+                commentaire.setFileUploadList(fileUploadByCommentaireId);
+            }
+        }
         List<CommentaireDTO> commentaireDTOS = commentaires.stream().map(commentaire -> dtoMapper
                         .fromCommentairetoCommentaireDTO(commentaire))
                 .collect(Collectors.toList());
@@ -107,6 +118,14 @@ public class CommentaireServiceImpl implements CommentaireService {
             throw new TacheNotFoundException();
         }
         List<Commentaire> commentaires = commentaireRepository.findCommentairesByTache(id);
+        for (Commentaire commentaire : commentaires){
+            if (fileUploadRepository.findFileUploadByCommentaireId(commentaire.getId()).isEmpty()){
+                log.info("La liste des fichiers pour ce commentaire est vide....");
+            }else {
+                List<FileUpload> fileUploadByCommentaireId = fileUploadRepository.findFileUploadByCommentaireId(commentaire.getId());
+                commentaire.setFileUploadList(fileUploadByCommentaireId);
+            }
+        }
         List<CommentaireDTO> commentaireDTOS = commentaires.stream().map(commentaire ->
                                                     dtoMapper.fromCommentairetoCommentaireDTO(commentaire))
                                                     .collect(Collectors.toList());

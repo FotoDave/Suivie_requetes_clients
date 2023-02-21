@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import projet.suivie_requetes.entities.FileUpload;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface FileUploadRepository extends JpaRepository<FileUpload, Long> {
@@ -23,5 +24,5 @@ public interface FileUploadRepository extends JpaRepository<FileUpload, Long> {
             "from FileUpload f " +
             "left join f.commentaire com " +
             "where com.id = :id")
-    Optional<FileUpload> findFileUploadByCommentaireId(@Param("id") Long id);
+    List<FileUpload> findFileUploadByCommentaireId(@Param("id") Long id);
 }

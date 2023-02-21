@@ -28,7 +28,7 @@ public class RequetteController {
 
     @PostMapping("/requettes")
     @PreAuthorize("hasAnyAuthority('Client','Admin')")
-    public RequetteDTO creerRequette(@RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException {
+    public RequetteDTO creerRequette(@RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException, UserNotFoundException {
         return requetteService.creerRequette(requetteDTO);
     }
 
@@ -53,7 +53,7 @@ public class RequetteController {
     @PutMapping("/requettes/{id}")
     @PreAuthorize("hasAnyAuthority('Client','Admin')")
     public RequetteDTO updateRequette(@PathVariable Long id,
-                                      @RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException {
+                                      @RequestBody RequetteDTO requetteDTO) throws ClientNotFoundException, UserNotFoundException {
         requetteDTO.setId(id);
         return requetteService.creerRequette(requetteDTO);
     }

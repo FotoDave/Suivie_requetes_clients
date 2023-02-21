@@ -61,6 +61,7 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public List<AppUserDto> listUsers() {
+        log.info("Liste des utilisateurs");
         List<AppUser> appUsers = appUserRepository.findAll();
         List<AppUserDto> appUserDtos = appUsers.stream().map(appUser ->
                 dtoMapper.fromAppUserToAppUserDto(appUser)).collect(Collectors.toList());

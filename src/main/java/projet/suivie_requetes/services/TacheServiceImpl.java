@@ -147,14 +147,26 @@ public class TacheServiceImpl implements TacheService {
     }
 
     @Override
-    public TacheDTO getOneTache(Long id) {
-        Tache taches = tacheRepository.findById(id).get();
-        TacheDTO tacheDTO = dtoMapper.fromTachetoTacheDTO(taches);
-        if(collaborateurRepository.findCollaborateur(taches.getId()).isPresent()){
-            Collaborateur collaborateur = collaborateurRepository.findCollaborateur(taches.getId()).get();
+    public TacheDTO getOneTache(Long id) throws TacheNotFoundException {
+        if (tacheRepository.findById(id).isEmpty()){
+            throw new TacheNotFoundException("Tache not found...");
+        }
+        Tache tache = tacheRepository.getTacheByRequette(id);
+        Optional<Tache> tacheOptional = Optional.ofNullable(tacheRepository.getTacheByCollaborateur(id));
+        if (tacheOptional.isPresent()){
+            Tache tache1 = tacheOptional.get();
+            tache.setCollaborateur(tache1.getCollaborateur());
+        }
+        TacheDTO tacheDTO = dtoMapper.fromTachetoTacheDTO(tache);
+        /*if(collaborateurRepository.findById(tache.getCollaborateur().getId()).isPresent()){
+            Collaborateur collaborateur = collaborateurRepository.findCollaborateur(tache.getCollaborateur().getId()).get();
             tacheDTO.setCollaborateurId(collaborateur.getId());
             tacheDTO.setNomCollaborateur(collaborateur.getNom());
-        }
+        }*/
+        /*if(requetteRepository.findById(tache.getRequette().getId()).isPresent()){
+            Requette requette = requetteRepository.findById(tache.getRequette().getId()).get();
+            tacheDTO.setRequetteId(requette.getId());
+        }*/
         return tacheDTO;
     }
 

@@ -135,13 +135,13 @@ public class FileUploadServiceImpl implements FileUploadService {
                 }else {
                     throw new RequetteNotFoundException("Fichier not found at Requette");
                 }
-            case "C":
+            /*case "C":
                 if (fileUploadRepository.findFileUploadByCommentaireId(fileUploadDTO.getCommentaireId()).isPresent()){
                     FileUpload fileUpload = fileUploadRepository.findFileUploadByCommentaireId(fileUploadDTO.getCommentaireId()).get();
                     return dtoMapper.fromFileUploadToFileUploadDto(fileUpload);
                 }else {
                     throw new CommentaireNotFoundException("Fichier not found at Commentaire");
-                }
+                }*/
         }
         return null;
     }

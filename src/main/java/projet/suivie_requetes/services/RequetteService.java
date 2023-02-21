@@ -9,7 +9,7 @@ import projet.suivie_requetes.exceptions.UserNotFoundException;
 import java.util.List;
 
 public interface RequetteService {
-    RequetteDTO creerRequette(RequetteDTO requetteDTO) throws ClientNotFoundException;
+    RequetteDTO creerRequette(RequetteDTO requetteDTO) throws ClientNotFoundException, UserNotFoundException;
 
     List<RequetteDTO> listerRequette() throws ClientNotFoundException, UserNotFoundException;
     RequetteDTO getOneRequette(Long id);

@@ -3,6 +3,7 @@ package projet.suivie_requetes.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import projet.suivie_requetes.dtos.TacheDTO;
 import projet.suivie_requetes.ennums.StatusTache;
 import projet.suivie_requetes.entities.Collaborateur;
 import projet.suivie_requetes.entities.Tache;
@@ -16,6 +17,17 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
             "where t.intitule " +
             "like :nom")
     List<Tache> searchTache(@Param("nom") String nom);
+
+    @Query("select t " +
+            "from Tache t " +
+            "left join t.requette r " +
+            "where t.id = :id")
+    Tache getTacheByRequette(@Param("id") Long id);
+    @Query("select t " +
+            "from Tache t " +
+            "left join t.collaborateur r " +
+            "where t.id = :id")
+    Tache getTacheByCollaborateur(@Param("id") Long id);
 
     @Query("select t from Tache t " +
             "left join t.requette req " +
@@ -40,9 +52,28 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
                             @Param("dateDebut") Date dateDebut, @Param("dateFin") Date dateFin,
                             @Param("dateDebutPrev") Date dateDebutPrev, @Param("dateFinPrev") Date dateFinPrev);
 
+    /*@Query("select new projet.suivie_requetes.dtos.TacheDTO(" +
+            "t.id," +
+            "t.intitule, " +
+            "t.dateDebut, " +
+            "t.dateFin, " +
+            "t.observation, " +
+            "t.debutPrevisionel, " +
+            "t.finPrevisionel, " +
+            "t.statusTache, " +
+            "t.dateCreation," +
+            "req.id, " +
+            "col.id," +
+            "col.nom) " +
+            "from Tache t " +
+            "left join t.requette req " +
+            "left join t.collaborateur col " +
+            "order by t.dateCreation desc ")
+    List<TacheDTO> listeTacheOrdonnee();*/
+
     @Query("select t " +
             "from Tache t " +
-            "order by t.dateCreation desc")
+            "order by t.dateCreation desc ")
     List<Tache> listeTacheOrdonnee();
 
     @Query("select t " +

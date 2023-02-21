@@ -1,11 +1,14 @@
 package projet.suivie_requetes.mappers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import projet.suivie_requetes.dtos.*;
 import projet.suivie_requetes.entities.*;
+import projet.suivie_requetes.repositories.FileUploadRepository;
 import projet.suivie_requetes.security.dtos.AppUserDto;
 import projet.suivie_requetes.security.entities.AppUser;
+import projet.suivie_requetes.services.FileUploadServiceImpl;
 
 @Service
 public class DtoMapper {
@@ -34,6 +37,13 @@ public class DtoMapper {
     public CommentaireDTO fromCommentairetoCommentaireDTO(Commentaire commentaire){
         CommentaireDTO commentaireDTO = new CommentaireDTO();
         BeanUtils.copyProperties(commentaire, commentaireDTO);
+        if (commentaire.getFileUploadList() != null){
+            for (FileUpload fileUpload : commentaire.getFileUploadList()){
+                commentaireDTO.setFileName(fileUpload.getFileName());
+                commentaireDTO.setFileCode(fileUpload.getFileCode());
+            }
+        }
+
         return commentaireDTO;
     }
     public Commentaire fromCommentaireDTOtoCommentaire(CommentaireDTO commentaireDTO){
@@ -47,6 +57,9 @@ public class DtoMapper {
         BeanUtils.copyProperties(requette, requetteDTO);
         if (requette.getAppUser() != null){
             requetteDTO.setUsername(requette.getAppUser().getUsername());
+            if (requette.getAppUser().getClient() != null){
+                requetteDTO.setNomClient(requette.getAppUser().getClient().getNom());
+            }
         }
         return requetteDTO;
     }
@@ -59,9 +72,11 @@ public class DtoMapper {
     public TacheDTO fromTachetoTacheDTO(Tache tache){
         TacheDTO tacheDTO = new TacheDTO();
         BeanUtils.copyProperties(tache, tacheDTO);
-        if (tache.getCollaborateur() != null && tache.getRequette() != null){
+        if (tache.getCollaborateur() != null){
             tacheDTO.setCollaborateurId(tache.getCollaborateur().getId());
             tacheDTO.setNomCollaborateur(tache.getCollaborateur().getNom());
+        }
+        if (tache.getRequette() != null){
             tacheDTO.setRequetteId(tache.getRequette().getId());
         }
         return tacheDTO;
@@ -109,6 +124,9 @@ public class DtoMapper {
     public FileUploadDTO fromFileUploadToFileUploadDto(FileUpload fileUpload){
         FileUploadDTO fileUploadDTO = new FileUploadDTO();
         BeanUtils.copyProperties(fileUpload, fileUploadDTO);
+        if (fileUpload.getCommentaire() != null){
+            fileUploadDTO.setCommentaireId(fileUpload.getCommentaire().getId());
+        }
         return fileUploadDTO;
     }
 }

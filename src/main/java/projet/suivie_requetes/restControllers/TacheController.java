@@ -43,18 +43,24 @@ public class TacheController {
 
     @GetMapping("/taches/{id}")
     @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
-    public TacheDTO getOneTache(@PathVariable Long id){
+    public TacheDTO getOneTache(@PathVariable Long id) throws TacheNotFoundException {
         return tacheService.getOneTache(id);
     }
 
     @PutMapping("/taches/modifier")
-    @PreAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
     public TacheDTO modifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
         return tacheService.modifierTache(tacheDTO);
     }
 
+    @PutMapping("/taches/changeStatus")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
+    public TacheDTO changeStatusTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException, RequetteNotFoundException {
+        return tacheService.modifierStatutTache(tacheDTO);
+    }
+
     @PutMapping("/taches/planifier")
-    @PreAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
     public TacheDTO planifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
         return tacheService.planifierTache(tacheDTO);
     }

@@ -21,4 +21,32 @@ public class TacheDTO {
     private Long requetteId;
     private Long collaborateurId;
     private String nomCollaborateur;
+
+    /*public TacheDTO(
+            Long id,
+        String intitule,
+        Date dateDebut,
+        Date dateFin,
+        String observation,
+        Date debutPrevisionel,
+        Date finPrevisionel,
+        StatusTache statusTache,
+        Date dateCreation,
+        Long requetteId,
+        Long collaborateurId,
+        String nomCollaborateur
+    ){
+        this.id = id;
+        this.intitule = intitule;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.observation = observation;
+        this.debutPrevisionel = debutPrevisionel;
+        this.finPrevisionel = finPrevisionel;
+        this.statusTache = statusTache;
+        this.dateCreation = dateCreation;
+        this.requetteId = requetteId;
+        this.collaborateurId = collaborateurId;
+        this.nomCollaborateur = nomCollaborateur;
+    }*/
 }

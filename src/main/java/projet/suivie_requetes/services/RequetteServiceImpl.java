@@ -18,6 +18,7 @@ import projet.suivie_requetes.security.entities.AppUser;
 import projet.suivie_requetes.security.repository.AppUserRepository;
 import projet.suivie_requetes.security.service.SecurityServiceImpl;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,10 +39,11 @@ public class RequetteServiceImpl implements RequetteService {
 
 
     @Override
-    public RequetteDTO creerRequette(RequetteDTO requetteDTO) throws ClientNotFoundException {
+    public RequetteDTO creerRequette(RequetteDTO requetteDTO) throws ClientNotFoundException, UserNotFoundException {
         log.info("Creation de la requette");
         Requette requette = dtoMapper.fromRequetteDTOtoRequette(requetteDTO);
-        Optional<AppUser> appUserOptional = Optional.ofNullable(appUserRepository.findByUsername(requetteDTO.getUsername()));
+        String username = securityService.connectedUser();
+        Optional<AppUser> appUserOptional = Optional.ofNullable(appUserRepository.findByUsername(username));
         if (appUserOptional.isPresent()){
             AppUser appUser = appUserOptional.get();
             Optional<Client> clientOptional = clientRepository.findById(appUser.getClient().getId());
@@ -67,30 +69,31 @@ public class RequetteServiceImpl implements RequetteService {
     public List<RequetteDTO> listerRequette() throws ClientNotFoundException, UserNotFoundException {
         log.info("Lister les requettes uniquement par client");
         String username = securityService.connectedUser();
-        Optional<AppUser> appUserOptional = Optional.ofNullable(securityService.loadUserByUsername(username));
+        Optional<AppUser> appUserOptional = Optional.ofNullable(appUserRepository.getAppUserByClient(username));
         if (appUserOptional.isPresent()){
             AppUser appUser = appUserOptional.get();
-            Optional<Client> clientOptional = clientRepository.findById(appUser.getClient().getId());
             Boolean test = false;
-            List<AppRole> roleList = (List<AppRole>) appUser.getAppRoles();
-            for (AppRole role : roleList){
-                if (role.getRoleName() == "Admin"){
+            Collection<AppRole> appRoles = appUser.getAppRoles();
+            for (AppRole role : appRoles){
+                if (role.getId() == Long.valueOf(1) || role.getId() == Long.valueOf(3)){
                     test = true;
                 }
             }
-            if (clientOptional.isPresent()){
-                List<Requette> requettes = requetteRepository.listRequettesByClient(appUser.getClient().getId());
-                List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
-                        .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
-                return requetteDTOS;
-            }else if (test == true){
+            if (test == true){
                 List<Requette> requettes = requetteRepository.listOrderRequettes();
                 List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
                         .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
                 return requetteDTOS;
-            }else {
+            }
+            if (appUser.getClient() != null){
+                List<Requette> requettes = requetteRepository.listRequettesByClient(appUser.getClient().getId());
+                List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
+                        .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
+                return requetteDTOS;
+            } else {
                 throw new ClientNotFoundException("Client not found...");
             }
+
         } else {
            throw new UserNotFoundException("User not found....");
         }

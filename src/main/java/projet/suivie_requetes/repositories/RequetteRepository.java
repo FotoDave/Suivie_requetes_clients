@@ -24,7 +24,7 @@ public interface RequetteRepository extends JpaRepository<Requette, Long> {
 
     @Query("select r " +
             "from Requette r " +
-            "order by r.date_creation")
+            "order by r.date_creation desc ")
     List<Requette> listOrderRequettes();
 
     @Query("select r " +

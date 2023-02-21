@@ -29,9 +29,9 @@ public class Tache {
     @OneToMany(mappedBy = "requette")
     private List<FileUpload> fileUploadList;
     @ManyToOne
-    @JoinColumn(name = "tache.requette_id")
+    @JoinColumn(name = "requette_id")
     private Requette requette;
     @ManyToOne
-    @JoinColumn(name = "tache.collaborateur_id")
+    @JoinColumn(name = "collaborateur_id")
     private Collaborateur collaborateur;
 }

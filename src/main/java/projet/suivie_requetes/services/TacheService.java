@@ -17,7 +17,7 @@ public interface TacheService {
     TacheDTO modifierStatutTache(TacheDTO tacheDTO) throws TacheNotFoundException, RequetteNotFoundException;
 
     List<TacheDTO> listerTache();
-    TacheDTO getOneTache(Long id);
+    TacheDTO getOneTache(Long id) throws TacheNotFoundException;
     List<TacheDTO> searchTache(String nom);
     List<TacheDTO> searchTacheByRequetteIdOrStatusTache(String requetteId, String statusTache) throws RequetteNotFoundException, StatusNotFoundException;
 
