@@ -35,18 +35,20 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
             "order by t.dateCreation desc")
     List<Tache> findTachesByRequetteOrStatus(@Param("id") Long id, @Param("status") StatusTache status);
 
-    @Query("select t " +
-            "from Tache t " +
-            "left join t.requette req " +
-            "left join t.collaborateur collab " +
-            "where :idCollab is null or :idCollab = '' or collab.id = :idCollab " +
-            "and :id is null or :id = '' or t.id = :id " +
-            "and :idReq is null or :idReq = '' or req.id = :idReq " +
-            "and :statut is null or :statut = '' or t.statusTache = :statut " +
-            "and :dateDebut is null or :dateDebut = '' or t.dateDebut = :dateDebut " +
-            "and :dateFin is null or :dateFin = '' or t.dateFin = :dateFin " +
-            "and :dateDebutPrev is null or :dateDebutPrev = '' or t.debutPrevisionel = :dateDebutPrev " +
-            "and :dateFinPrev is null or :dateFinPrev = '' or t.finPrevisionel = :dateFinPrev ")
+
+    @Query(
+            value = "SELECT * FROM tache " +
+            "WHERE (:idCollab = 0 OR tache.collaborateur_id = :idCollab) " +
+            "AND (:id = 0 OR tache.id = :id) " +
+            "AND (:idReq = 0 OR tache.requette_id = :idReq) " +
+            "AND (:statut IS NULL OR :statut = '' OR tache.status_tache = :statut) " +
+            "AND (:dateDebut IS NULL OR :dateDebut = '' OR tache.date_debut = :dateDebut) " +
+            "AND (:dateFin IS NULL OR :dateFin = '' OR tache.date_fin = :dateFin) " +
+            "AND (:dateDebutPrev IS NULL OR :dateDebutPrev = '' OR tache.debut_previsionel = :dateDebutPrev) " +
+            "AND (:dateFinPrev IS NULL OR :dateFinPrev = '' OR tache.fin_previsionel = :dateFinPrev) " +
+            "ORDER BY tache.date_creation DESC",
+            nativeQuery = true
+    )
     List<Tache> filterTache(@Param("id") Long idTache, @Param("idReq") Long idReq,
                             @Param("idCollab") Long idCollab, @Param("statut") String statut,
                             @Param("dateDebut") Date dateDebut, @Param("dateFin") Date dateFin,

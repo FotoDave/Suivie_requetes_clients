@@ -3,10 +3,13 @@ package projet.suivie_requetes.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import projet.suivie_requetes.ennums.StatusRequette;
+import projet.suivie_requetes.ennums.TypeRequette;
 import projet.suivie_requetes.entities.Requette;
 
 import java.util.List;
-
+@Repository
 public interface RequetteRepository extends JpaRepository<Requette, Long> {
     @Query("select r " +
             "from Requette r " +
@@ -27,21 +30,20 @@ public interface RequetteRepository extends JpaRepository<Requette, Long> {
             "order by r.date_creation desc ")
     List<Requette> listOrderRequettes();
 
-    @Query("select r " +
-            "from Requette r " +
-            "left join r.appUser a " +
-            "left join a.client c " +
-            "where :idReq is null or :idReq = '' or r.id = :idReq " +
-            "and :type is null or :type = '' or r.typeRequette = :type " +
-            "and :intitule is null or :intitule = '' or r.intitule like :intitule " +
-            "and :urgence is null or :urgence = '' or r.urgence like :urgence " +
-            "and :obser is null or :obser = '' or r.observation like :obser " +
-            "and :module is null or :module = '' or r.module like :module " +
-            "and :idClient is null or :idClient = '' or c.id = :idClient " +
-            "order by r.date_creation desc ")
+    @Query(
+            value = "SELECT * FROM requette " +
+                    "LEFT JOIN app_user ON requette.requette_app_user_id " +
+                    "LEFT JOIN client ON app_user.utilisateur_client_id " +
+                    "WHERE (:idReq = 0 OR requette.id = :idReq) " +
+                    "AND (:intitule IS NULL OR :intitule = '' OR requette.intitule = :intitule) " +
+                    "AND (:type IS NULL OR :type = '' OR requette.type_requette = :type) " +
+                    "AND (:status IS NULL OR :status = '' OR requette.status_requette = :status) " +
+                    "AND (:idClient = 0 OR client.id = :idClient) " +
+                    "ORDER BY requette.date_creation DESC",
+            nativeQuery = true
+    )
     List<Requette> filterRequettes(@Param("type") String type, @Param("intitule") String intitule,
-                                   @Param("module") String module, @Param("urgence") String urgence,
-                                   @Param("obser") String observation, @Param("idReq") Long idReq,
+                                   @Param("idReq") Long idReq, @Param("status") String status,
                                    @Param("idClient") Long idClient);
 
 }

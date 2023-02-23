@@ -53,10 +53,9 @@ public class CommentaireController {
         return commentaireService.getListCommentaireParTaches(id);
     }
 
-    @PutMapping("/commentaires/{id}")
-    public void modfierStatusCommentaire(@PathVariable Long id,
-            @RequestBody ModifStatusComDTO modifStatusComDTO) throws CommentaireNotFoundException {
-        modifStatusComDTO.setId(id);
-        commentaireService.modfierStatusCommentaire(modifStatusComDTO);
+    @GetMapping("/commentaire/{id}")
+    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
+    public CommentaireDTO changeStatusCommentaire(@PathVariable Long id) throws CommentaireNotFoundException {
+        return commentaireService.changeStatusCommentaire(id);
     }
 }

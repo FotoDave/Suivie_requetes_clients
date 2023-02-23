@@ -12,6 +12,9 @@ public interface RequetteService {
     RequetteDTO creerRequette(RequetteDTO requetteDTO) throws ClientNotFoundException, UserNotFoundException;
 
     List<RequetteDTO> listerRequette() throws ClientNotFoundException, UserNotFoundException;
+
+    List<RequetteDTO> filterRequette(String typeRequette, String statusRequette, String intitule, Long idClient, Long id);
+
     RequetteDTO getOneRequette(Long id);
     List<RequetteDTO> searchRequette(String nom);
 

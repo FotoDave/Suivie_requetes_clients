@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.RequetteDTO;
 import projet.suivie_requetes.ennums.StatusRequette;
+import projet.suivie_requetes.ennums.TypeRequette;
 import projet.suivie_requetes.entities.Client;
 import projet.suivie_requetes.entities.Requette;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;
@@ -20,6 +21,7 @@ import projet.suivie_requetes.security.service.SecurityServiceImpl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -100,12 +102,20 @@ public class RequetteServiceImpl implements RequetteService {
     }
 
     @Override
+    public List<RequetteDTO> filterRequette(String typeRequette, String statusRequette, String intitule, Long idClient, Long id){
+        log.info("Filtre des requettes");
+        List<Requette> requettes = requetteRepository
+                .filterRequettes(typeRequette, intitule,
+                 id == null ? 0 : id, statusRequette, idClient == null ? 0 : idClient);
+        List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
+                .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
+        return requetteDTOS;
+    }
+
+    @Override
     public RequetteDTO getOneRequette(Long id) {
         Requette requette = requetteRepository.findById(id).get();
         RequetteDTO requetteDTO = dtoMapper.fromRequettetoRequetteDTO(requette);
-        /*requetteDTO.setNomClient(
-                clientRepository.findById(requetteDTO.getClientId()).get().getNom()
-        );*/
         return requetteDTO;
     }
 

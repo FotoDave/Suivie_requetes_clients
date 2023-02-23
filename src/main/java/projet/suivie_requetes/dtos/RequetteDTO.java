@@ -24,6 +24,7 @@ public class RequetteDTO {
 
     private String username;
     private String nomClient;
+    private Long clientId;
     /*public static RequetteDTO mapFromRequette(Requette requette){
         RequetteDTO requetteDTO = new RequetteDTO();
         BeanUtils.copyProperties(requette, requetteDTO);

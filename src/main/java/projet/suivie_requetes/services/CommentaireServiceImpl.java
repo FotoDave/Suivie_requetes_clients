@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.CommentaireDTO;
-import projet.suivie_requetes.dtos.ModifStatusComDTO;
 import projet.suivie_requetes.ennums.StatusCommenttaire;
 import projet.suivie_requetes.entities.Commentaire;
 import projet.suivie_requetes.entities.FileUpload;
@@ -15,7 +14,6 @@ import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -92,16 +90,6 @@ public class CommentaireServiceImpl implements CommentaireService {
         return commentaireDTOS;
     }
 
-    @Override
-    public void modfierStatusCommentaire(ModifStatusComDTO modifStatusComDTO) throws CommentaireNotFoundException {
-        log.info("Modifier commentaire");
-        if (commentaireRepository.findById(modifStatusComDTO.getId()).isEmpty()){
-            throw new CommentaireNotFoundException();
-        }
-        Commentaire commentaire = commentaireRepository.findById(modifStatusComDTO.getId()).get();
-        commentaire.setStatusCommenttaire(modifStatusComDTO.getStatusCommenttaire());
-        commentaireRepository.save(commentaire);
-    }
 
     @Override
     public CommentaireDTO getOneCommentaire(Long id) throws CommentaireNotFoundException {

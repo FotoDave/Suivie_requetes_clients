@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import projet.suivie_requetes.dtos.ModifStatusTacheDTO;
 import projet.suivie_requetes.dtos.TacheDTO;
 import projet.suivie_requetes.ennums.StatusRequette;
 import projet.suivie_requetes.ennums.StatusTache;
@@ -18,7 +17,6 @@ import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -138,6 +136,21 @@ public class TacheServiceImpl implements TacheService {
     }
 
     @Override
+    public List<TacheDTO> filterTaches(Long idTache, Long idReq,
+                                       Long idCollab, String statut,
+                                       Date dateDebut, Date dateFin,
+                                       Date dateDebutPrev, Date dateFinPrev){
+        log.info("Filtre des taches");
+        List<Tache> taches = tacheRepository.filterTache(idTache == null ? 0 : idTache, idReq == null ? 0 : idReq,
+                idCollab == null ? 0 : idCollab,
+                statut, dateDebut, dateFin, dateDebutPrev, dateFinPrev);
+        List<TacheDTO> tacheDTOS = taches.stream().map(tache ->
+                dtoMapper.fromTachetoTacheDTO(tache)).collect(Collectors.toList());
+
+        return tacheDTOS;
+    }
+
+    @Override
     public List<TacheDTO> listerTache(){
         log.info("Listing des taches");
         List<Tache> taches = tacheRepository.listeTacheOrdonnee();
@@ -158,15 +171,7 @@ public class TacheServiceImpl implements TacheService {
             tache.setCollaborateur(tache1.getCollaborateur());
         }
         TacheDTO tacheDTO = dtoMapper.fromTachetoTacheDTO(tache);
-        /*if(collaborateurRepository.findById(tache.getCollaborateur().getId()).isPresent()){
-            Collaborateur collaborateur = collaborateurRepository.findCollaborateur(tache.getCollaborateur().getId()).get();
-            tacheDTO.setCollaborateurId(collaborateur.getId());
-            tacheDTO.setNomCollaborateur(collaborateur.getNom());
-        }*/
-        /*if(requetteRepository.findById(tache.getRequette().getId()).isPresent()){
-            Requette requette = requetteRepository.findById(tache.getRequette().getId()).get();
-            tacheDTO.setRequetteId(requette.getId());
-        }*/
+
         return tacheDTO;
     }
 

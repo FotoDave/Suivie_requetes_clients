@@ -2,10 +2,9 @@ package projet.suivie_requetes.restControllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import projet.suivie_requetes.utils.FunctionUtils;
 import projet.suivie_requetes.dtos.RequetteDTO;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;
 import projet.suivie_requetes.exceptions.RequetteNotFoundException;
@@ -36,6 +35,20 @@ public class RequetteController {
     @PreAuthorize("hasAnyAuthority('Client','Admin','Collaborateur')")
     public List<RequetteDTO> listeRequettes() throws ClientNotFoundException, UserNotFoundException {
         return requetteService.listerRequette();
+    }
+
+    @GetMapping("/requette/filter")
+    @PreAuthorize("hasAnyAuthority('Client','Admin','Collaborateur')")
+    public List<RequetteDTO> filtrerRequette(
+            @RequestParam(name = "typeRequette", required = false, defaultValue = "") String typeRequette,
+            @RequestParam(name = "statusRequette", required = false, defaultValue = "") String statusRequette,
+            @RequestParam(name = "intitule", required = false, defaultValue = "") String intitule,
+            @RequestParam(name = "idClient", required = false, defaultValue = "") String idClient,
+            @RequestParam(name = "id", required = false, defaultValue = "") String id
+    ) {
+        Long idValue = FunctionUtils.convertStringToLong(id);
+        Long idClientValue = FunctionUtils.convertStringToLong(idClient);
+        return requetteService.filterRequette(typeRequette, statusRequette, intitule, idClientValue, idValue);
     }
 
     @GetMapping("/requettes/{id}")
