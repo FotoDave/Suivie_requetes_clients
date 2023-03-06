@@ -10,10 +10,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import projet.suivie_requetes.exceptions.RoleNotFoundException;
+import projet.suivie_requetes.exceptions.UserNotFoundException;
 import projet.suivie_requetes.security.dtos.AppUserDto;
+import projet.suivie_requetes.security.entities.AppRole;
+import projet.suivie_requetes.security.repository.AppUserRepository;
 import projet.suivie_requetes.security.service.SecurityServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -24,23 +28,34 @@ public class SuivieRequetesApplication {
         SpringApplication.run(SuivieRequetesApplication.class, args);
     }
 
-    /*@Bean
-    CommandLineRunner commandLineRunner(SecurityServiceImpl service) {
+    @Bean
+    CommandLineRunner commandLineRunner(SecurityServiceImpl service, AppUserRepository appUserRepository) {
         return args -> {
+            /*AppRole appRole1 = new AppRole(null,"Admin");
+            AppRole appRole2 = new AppRole(null,"Collaborateur");
+            AppRole appRole3 = new AppRole(null,"Client");
+            service.addNewRole(appRole1);
+            service.addNewRole(appRole2);
+            service.addNewRole(appRole3);*/
             ArrayList<String> roles = new ArrayList<String>();
             roles.add("Admin");
             AppUserDto userDto = new AppUserDto();
             userDto.setUsername("Admin");
             userDto.setPassword("1234");
             userDto.setRoles(roles);
-            try {
-                service.addNewUser(userDto);
-            } catch (RoleNotFoundException e) {
-                throw new RuntimeException(e);
+            if(Optional.ofNullable(appUserRepository.findByUsername(userDto.getUsername())).isEmpty()){
+                try {
+                    AppUserDto appUserDto = service.addNewUser(userDto);
+                    System.out.println("*************************");
+                    System.out.println("Informations de l'utilisateur : ");
+                    System.out.println(appUserDto.getUsername());
+                    System.out.println(appUserDto.getRoles());
+                } catch (RoleNotFoundException | UserNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
-            service.listUsers();
         };
-    }*/
+    }
 
     @Bean
     PasswordEncoder passwordEncoder(){

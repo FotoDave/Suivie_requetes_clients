@@ -32,13 +32,12 @@ public interface RequetteRepository extends JpaRepository<Requette, Long> {
 
     @Query(
             value = "SELECT * FROM requette " +
-                    "LEFT JOIN app_user ON requette.requette_app_user_id " +
-                    "LEFT JOIN client ON app_user.utilisateur_client_id " +
+                    "INNER JOIN app_user ON requette.requette_app_user_id " +
                     "WHERE (:idReq = 0 OR requette.id = :idReq) " +
                     "AND (:intitule IS NULL OR :intitule = '' OR requette.intitule = :intitule) " +
                     "AND (:type IS NULL OR :type = '' OR requette.type_requette = :type) " +
                     "AND (:status IS NULL OR :status = '' OR requette.status_requette = :status) " +
-                    "AND (:idClient = 0 OR client.id = :idClient) " +
+                    "AND (:idClient = 0 OR app_user.utilisateur_client_id = :idClient) " +
                     "ORDER BY requette.date_creation DESC",
             nativeQuery = true
     )

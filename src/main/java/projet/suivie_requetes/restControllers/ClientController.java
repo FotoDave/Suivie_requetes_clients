@@ -30,13 +30,13 @@ public class ClientController {
     }
 
     @GetMapping("/clients")
-    @PreAuthorize("hasAuthority('Admin')")
+    @PreAuthorize("hasAnyAuthority('Admin','Collaborateur','Client')")
     public List<ClientDTO> listClients(){
         return clientService.listClients();
     }
 
     @GetMapping("/clients/{id}")
-    @PreAuthorize("hasAnyAuthority('Admin','Collaborateur')")
+    @PreAuthorize("hasAnyAuthority('Admin','Collaborateur', 'Client')")
     public ClientDTO getOneClient(@PathVariable Long id){
         return clientService.oneClient(id);
     }
