@@ -30,6 +30,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         response.setHeader("Access-Control-Allow-Methods", "*");
 
         if (request.getServletPath().equals("/refreshToken")){
+            //Ici on laisse passer la requette
             filterChain.doFilter(request,response);
         }
         else{

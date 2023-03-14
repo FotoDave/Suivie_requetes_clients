@@ -12,24 +12,13 @@ import java.util.List;
 
 public interface TacheService {
     TacheDTO creerTache(TacheDTO tacheDTO) throws CollaborateurNotFoundException, RequetteNotFoundException, TacheAlreadyExistException;
-
-    void deleteTache(Long id) throws TacheNotFoundException;
-
     TacheDTO modifierStatutTache(TacheDTO tacheDTO) throws TacheNotFoundException, RequetteNotFoundException;
-
     List<TacheDTO> filterTaches(Long idTache, Long idReq,
                                 Long idCollab, String statut,
                                 Date dateDebut, Date dateFin,
                                 Date dateDebutPrev, Date dateFinPrev);
-
     List<TacheDTO> listerTache();
     TacheDTO getOneTache(Long id) throws TacheNotFoundException;
-    List<TacheDTO> searchTache(String nom);
-    List<TacheDTO> searchTacheByRequetteIdOrStatusTache(String requetteId, String statusTache) throws RequetteNotFoundException, StatusNotFoundException;
-
     TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;
-
-    //void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException;
-
     TacheDTO modifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;
 }

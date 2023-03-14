@@ -56,12 +56,6 @@ public class TacheController {
         return tacheService.listerTache();
     }
 
-    @GetMapping("/taches/searchTache")
-    @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
-    public List<TacheDTO> searchTacheByRequetteIdOrStatusTache(@RequestParam String requetteId, @RequestParam String statusTache) throws RequetteNotFoundException, StatusNotFoundException {
-        return tacheService.searchTacheByRequetteIdOrStatusTache(requetteId, statusTache);
-    }
-
     @GetMapping("/taches/{id}")
     @PreAuthorize("hasAnyAuthority('Collaborateur','Admin')")
     public TacheDTO getOneTache(@PathVariable Long id) throws TacheNotFoundException {
@@ -85,20 +79,4 @@ public class TacheController {
     public TacheDTO planifierTache(@RequestBody TacheDTO tacheDTO) throws TacheNotFoundException {
         return tacheService.planifierTache(tacheDTO);
     }
-
-    /*@PutMapping("/modifierStatusTache/{id}")
-    public void modifierStatusTache(@PathVariable Long id,
-                                    @RequestBody ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException {
-        tacheService.modifierStatusTache(modifStatusTacheDTO);
-    }*/
-
-    /*@GetMapping("/taches/search")
-    public List<TacheDTO> searchTache(@RequestParam String nom){
-        return tacheService.searchTache("%"+nom+"%");
-    }*/
-
-    /*@DeleteMapping("/taches/{id}")
-    public void deleteTache(@PathVariable Long id) throws TacheNotFoundException {
-        tacheService.deleteTache(id);
-    }*/
 }

@@ -51,16 +51,15 @@ public class TacheServiceImpl implements TacheService {
             if (requette.getStatusRequette() == StatusRequette.TRAITE){
                 throw new RequetteNotFoundException("La requette est déjà traité");
             }
-            tache.setRequette(requette);
-            if (requette.getStatusRequette() != StatusRequette.EN_COURS){
+            if (requette.getStatusRequette() == StatusRequette.NON_TRAITE){
                 requette.setStatusRequette(StatusRequette.EN_COURS);
                 requetteRepository.save(requette);
             }
+            tache.setRequette(requette);
         }else {
             throw new RequetteNotFoundException();
         }
         tacheRepository.save(tache);
-        //return dtoMapper.fromTacheNonPlanifietoTacheDTO(tache);
         return dtoMapper.fromTachetoTacheDTO(tache);
     }
     @Override
@@ -120,6 +119,10 @@ public class TacheServiceImpl implements TacheService {
                         }
                     }
                     if (taches.size() == arrayList.size()){
+                        /*
+                        Si la taille du tableau de taches est la même que celle de l'arraylist,
+                         je change le statut de la requette à "TRAITE"
+                         */
                         Requette requette = requetteOptional.get();
                         requette.setStatusRequette(StatusRequette.TRAITE);
                         requetteRepository.save(requette);
@@ -182,56 +185,5 @@ public class TacheServiceImpl implements TacheService {
         TacheDTO tacheDTO = dtoMapper.fromTachetoTacheDTO(tache);
 
         return tacheDTO;
-    }
-
-    @Override
-    public List<TacheDTO> searchTacheByRequetteIdOrStatusTache(String requetteId, String statusTache) throws RequetteNotFoundException, StatusNotFoundException {
-       /* if (requetteRepository.findById(tacheDTO.getRequetteId()).isEmpty()){
-            throw new RequetteNotFoundException("idRequtte not found");
-        }*/
-        log.info("Recherche de la tache en fonction de l'id de la requette et du status de la tache");
-        List<Tache> taches = tacheRepository.findTachesByRequetteOrStatus(parseLong(requetteId), StatusTache.valueOf(statusTache));
-        List<TacheDTO> tachesDTO = taches.stream().map(
-                            tache -> dtoMapper.fromTachetoTacheDTO(tache))
-                    .collect(Collectors.toList());
-
-        return tachesDTO;
-    }
-
-    /*@Override
-    public void modifierStatusTache(ModifStatusTacheDTO modifStatusTacheDTO) throws TacheNotFoundException {
-        log.info("Modifier le status de la tache");
-        if (tacheRepository.findById(modifStatusTacheDTO.getId()).isEmpty()){
-            throw new TacheNotFoundException();
-        }
-        Tache tache = tacheRepository.findById(modifStatusTacheDTO.getId()).get();
-        tache.setStatusTache(modifStatusTacheDTO.getStatusTache());
-        if (tache.getStatusTache().equals(StatusTache.EN_COURS)){
-            tache.setDateDebut(new Date());
-        }
-        if (tache.getStatusTache().equals(StatusTache.TERMINE)){
-            tache.setDateFin(new Date());
-        }
-        tacheRepository.save(tache);
-    }*/
-
-
-    @Override
-    public void deleteTache(Long id) throws TacheNotFoundException {
-        log.info("Suppression de la tache");
-        if (tacheRepository.findById(id).isEmpty()){
-            throw new TacheNotFoundException();
-        }else {
-            tacheRepository.deleteById(id);
-        }
-    }
-
-    @Override
-    public List<TacheDTO> searchTache(String nom) {
-        List<Tache> taches = tacheRepository.searchTache(nom);
-        List<TacheDTO> tacheDTOS = taches.stream().map(
-                        tache -> dtoMapper.fromTachetoTacheDTO(tache))
-                .collect(Collectors.toList());
-        return tacheDTOS;
     }
 }

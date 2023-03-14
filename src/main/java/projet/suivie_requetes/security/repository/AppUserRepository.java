@@ -3,6 +3,7 @@ package projet.suivie_requetes.security.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import projet.suivie_requetes.entities.Client;
 import projet.suivie_requetes.security.entities.AppUser;
 
 public interface AppUserRepository extends JpaRepository<AppUser,Long> {

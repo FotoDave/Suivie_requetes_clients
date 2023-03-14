@@ -48,19 +48,21 @@ public class RequetteServiceImpl implements RequetteService {
         Optional<AppUser> appUserOptional = Optional.ofNullable(appUserRepository.findByUsername(username));
         if (appUserOptional.isPresent()){
             AppUser appUser = appUserOptional.get();
-            Optional<Client> clientOptional = clientRepository.findById(appUser.getClient().getId());
+            Optional<Client> clientOptional = Optional.ofNullable(appUser.getClient());
             Boolean test = false;
             List<AppRole> roleList = (List<AppRole>) appUser.getAppRoles();
-            for (AppRole role : roleList){
-                if (role.getRoleName() == "Admin"){
-                    test = true;
+                for (AppRole role : roleList){
+                    //ici on spécifie que l'utilisateur avec le role "Admin" peut aussi créer les requettes
+                    if (role.getRoleName() == "Admin"){
+                        test = true;
+                    }
                 }
-            }
-            if (clientOptional.isPresent() || test == true){
-                requette.setAppUser(appUser);
-            }
+                if (clientOptional.isPresent() || test == true){
+                    //On enregistre l'utilisateur qui a créer la requette
+                    requette.setAppUser(appUser);
+                }
         }else{
-            throw new ClientNotFoundException("Client not found or Utilisateur not found...");
+            throw new ClientNotFoundException("Client not found or User not found...");
         }
         requette.setStatusRequette(StatusRequette.NON_TRAITE);
         requetteRepository.save(requette);
@@ -77,17 +79,19 @@ public class RequetteServiceImpl implements RequetteService {
             Boolean test = false;
             Collection<AppRole> appRoles = appUser.getAppRoles();
             for (AppRole role : appRoles){
-                if (role.getId() == Long.valueOf(1) || role.getId() == Long.valueOf(3)){
+                if (role.getRoleName() == "Collaborateur" || role.getRoleName() == "Admin"){
                     test = true;
                 }
             }
             if (test == true){
+                //Ici, si l'utilisateur n'a pas le role "Client", on lui affiche toutes les requettes enregistrées en BD
                 List<Requette> requettes = requetteRepository.listOrderRequettes();
                 List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
                         .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
                 return requetteDTOS;
             }
             if (appUser.getClient() != null){
+                //Ici, si l'utilisateur est associé à un client, on lui affiche toutes les requettes qu'il a posté
                 List<Requette> requettes = requetteRepository.listRequettesByClient(appUser.getClient().getId());
                 List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
                         .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());

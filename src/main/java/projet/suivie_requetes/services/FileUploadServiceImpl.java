@@ -43,6 +43,11 @@ public class FileUploadServiceImpl implements FileUploadService {
     public FileUploadDTO uploadFile(MultipartFile file, FileUploadDTO fileUploadDTO)
             throws IOException, TacheNotFoundException, RequetteNotFoundException, CommentaireNotFoundException {
         log.info("Enregistrement fichiers à uploader...");
+
+        /*
+        Grâce à la variable "element", cela me permet de gérer facilement les cas où il faudra uploader
+        les fichiers au niveau des "Requettes", "Taches", et "Commentaires"
+         */
         switch (fileUploadDTO.getElement()){
             case "T":
                 fileUploadDTO.setTacheId(fileUploadDTO.getElementId());
@@ -56,19 +61,23 @@ public class FileUploadServiceImpl implements FileUploadService {
         }
         String fileName = file.getOriginalFilename();
         fileUploadDTO.setSize(file.getSize());
+        //Chemin d'accès du dossier qui contiendra les fichiers uploadés
         Path directory = Paths.get("/home/wallace/Documents/Prog_Spring/Suivie_requetes/Files-Uploaded");
+
+        //Ici je crée un code alpha-numérique decaractère qui sera le code unique à chaque fichier uploadé
         fileUploadDTO.setFileCode(RandomStringUtils.randomAlphanumeric(10));
         try {
             InputStream inputStream = file.getInputStream();
+            //Ici j'associe le code alphanumérique au nom du fichier uploadé
             Path filePath = directory.resolve(fileUploadDTO.getFileCode()+"-"+fileName);
             fileUploadDTO.setFileName(String.valueOf(filePath.getFileName()));
-            log.info("Récupération du fichier");
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             inputStream.close();
         }catch (Exception exception){
             throw new IOException("Erreur d'enregistrement du fichier : "+fileUploadDTO.getFileName(), exception);
         }
         FileUpload fileUpload = dtoMapper.fromFileUploadDtoToFileUpload(fileUploadDTO);
+        // En fonction de la variable "element", j'enregistre son correspondant
         switch (fileUploadDTO.getElement()){
             case "T":
                 if (tacheRepository.findById(fileUploadDTO.getTacheId()).isPresent()){

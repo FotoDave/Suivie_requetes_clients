@@ -76,6 +76,8 @@ public class CommentaireServiceImpl implements CommentaireService {
         if (commentaires.isEmpty()){
             throw new CommentaireNotFoundException();
         }
+
+        //Ici je gère seulement le cas où on affiche pour chaque commentaire un et un seul fichier uploadé...
         for (Commentaire commentaire : commentaires){
             if (fileUploadRepository.findFileUploadByCommentaireId(commentaire.getId()).isEmpty()){
                 log.info("La liste des fichiers pour ce commentaire est vide....");
@@ -93,6 +95,7 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     @Override
     public CommentaireDTO getOneCommentaire(Long id) throws CommentaireNotFoundException {
+        log.info("Récupération d'un seul commentaire...");
         if(commentaireRepository.findById(id).isEmpty()){
             throw new CommentaireNotFoundException();
         }
@@ -102,10 +105,13 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     @Override
     public List<CommentaireDTO> getListCommentaireParTaches(Long id) throws TacheNotFoundException {
+        log.info("Récupération de la liste des commentaires par taches...");
         if (tacheRepository.findById(id).isEmpty()){
             throw new TacheNotFoundException();
         }
         List<Commentaire> commentaires = commentaireRepository.findCommentairesByTache(id);
+
+        //Ici je gère seulement le cas où on affiche pour chaque commentaire un et un seul fichier uploadé...
         for (Commentaire commentaire : commentaires){
             if (fileUploadRepository.findFileUploadByCommentaireId(commentaire.getId()).isEmpty()){
                 log.info("La liste des fichiers pour ce commentaire est vide....");
