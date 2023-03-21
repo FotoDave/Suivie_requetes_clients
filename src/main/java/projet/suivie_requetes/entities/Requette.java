@@ -21,6 +21,7 @@ public class Requette {
     private String module;
     private String fonctionnalite;
     private String urgence;
+    @Column(columnDefinition = "TEXT")
     private String observation;
     @Enumerated(EnumType.STRING)
     private TypeRequette typeRequette;

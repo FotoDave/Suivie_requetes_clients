@@ -8,7 +8,7 @@ import projet.suivie_requetes.ennums.StatusTache;
 import projet.suivie_requetes.entities.Collaborateur;
 import projet.suivie_requetes.entities.Tache;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public interface TacheRepository extends JpaRepository<Tache, Long> {
@@ -80,7 +80,7 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
 
     @Query("select t " +
             "from Tache t " +
-            "left join Requette r " +
+            "left join t.requette r " +
             "where r.id = :id")
     List<Tache> findTachesByRequette(@Param("id") Long id);
     /*List<Tache> findAllByRequetteIdOrStatusTache(@Param("id") Long id, @Param("status") String status);*/

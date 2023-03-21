@@ -17,6 +17,7 @@ public class Tache {
     private String intitule;
     private Date dateDebut;
     private Date dateFin;
+    @Column(columnDefinition = "TEXT")
     private String observation;
     private Date debutPrevisionel;
     private Date finPrevisionel;

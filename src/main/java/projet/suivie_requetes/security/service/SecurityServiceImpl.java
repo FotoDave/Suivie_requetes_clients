@@ -97,12 +97,14 @@ public class SecurityServiceImpl implements SecurityService {
                     throw new RoleNotFoundException("Role not found !!");
                 }
             }
-            Optional<Client> optionalClient = clientRepository.findById(appUserDto.getClientId());
+            if (appUserDto.getClientId() != null){
+                Optional<Client> optionalClient = clientRepository.findById(appUserDto.getClientId());
                 if (optionalClient.isPresent()){
                     appUser.setClient(optionalClient.get());
                 }else {
                     throw new ClientNotFoundException("Client not found...");
                 }
+            }
             appUserRepository.save(appUser);
             return dtoMapper.fromAppUserToAppUserDto(appUser);
 

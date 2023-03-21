@@ -17,6 +17,7 @@ import java.util.List;
 public class AppUser {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String username;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     /*Ceci permet au mot de passe de ne pas être visible lors de la sérialisation

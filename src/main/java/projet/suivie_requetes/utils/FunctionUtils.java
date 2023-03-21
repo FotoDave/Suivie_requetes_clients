@@ -25,4 +25,8 @@ public class FunctionUtils {
             return null;
         }
     }
+
+    public static java.sql.Date convertUtilToSql(java.util.Date date){
+        return java.sql.Date.valueOf(date.toString());
+    }
 }

@@ -16,6 +16,7 @@ import projet.suivie_requetes.exceptions.TacheAlreadyExistException;
 import projet.suivie_requetes.exceptions.TacheNotFoundException;
 import projet.suivie_requetes.mappers.DtoMapper;
 import projet.suivie_requetes.repositories.*;
+import projet.suivie_requetes.utils.FunctionUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -109,16 +110,18 @@ public class TacheServiceImpl implements TacheService {
                 break;
             }
             case DEPLOYE -> {
+                log.info("Changement du status à 'DEPLOYE'");
                 Optional<Requette> requetteOptional = requetteRepository.findById(tacheDTO.getRequetteId());
                 if (requetteOptional.isPresent()){
                     List<Tache> taches = tacheRepository.findTachesByRequette(tacheDTO.getRequetteId());
+                    Boolean test = false;
                     ArrayList<String> arrayList = new ArrayList<>();
                     for (Tache tache1 : taches){
-                        if (tache1.getStatusTache() == StatusTache.DEPLOYE || tache1.getId() == tache.getId()){
+                        if (tache1.getStatusTache() == StatusTache.DEPLOYE && tache1.getId() != tache.getId()){
                             arrayList.add("Okay");
                         }
                     }
-                    if (taches.size() == arrayList.size()){
+                    if (arrayList.size() == (taches.size()-1)){
                         /*
                         Si la taille du tableau de taches est la même que celle de l'arraylist,
                          je change le statut de la requette à "TRAITE"
@@ -154,8 +157,11 @@ public class TacheServiceImpl implements TacheService {
         log.info("dateDebutPrev : "+dateDebutPrev);
         log.info("dateFinPrev : "+dateFinPrev);
         List<Tache> taches = tacheRepository.filterTache(idTache == null ? 0 : idTache, idReq == null ? 0 : idReq,
-                idCollab == null ? 0 : idCollab,
-                statut, dateDebut, dateFin, dateDebutPrev, dateFinPrev);
+                idCollab == null ? 0 : idCollab, statut,
+                dateDebut == null ? null : FunctionUtils.convertUtilToSql(dateDebut),
+                dateFin == null ? null : FunctionUtils.convertUtilToSql(dateFin),
+                dateDebutPrev == null ? null : FunctionUtils.convertUtilToSql(dateDebutPrev),
+                dateFinPrev == null ? null : FunctionUtils.convertUtilToSql(dateFinPrev));
         List<TacheDTO> tacheDTOS = taches.stream().map(tache ->
                 dtoMapper.fromTachetoTacheDTO(tache)).collect(Collectors.toList());
 

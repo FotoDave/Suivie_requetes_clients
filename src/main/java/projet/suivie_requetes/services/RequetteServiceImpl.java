@@ -71,36 +71,31 @@ public class RequetteServiceImpl implements RequetteService {
 
     @Override
     public List<RequetteDTO> listerRequette() throws ClientNotFoundException, UserNotFoundException {
-        log.info("Lister les requettes uniquement par client");
+        log.info("Lister les requettes");
         String username = securityService.connectedUser();
         Optional<AppUser> appUserOptional = Optional.ofNullable(appUserRepository.getAppUserByClient(username));
         if (appUserOptional.isPresent()){
             AppUser appUser = appUserOptional.get();
-            Boolean test = false;
-            Collection<AppRole> appRoles = appUser.getAppRoles();
-            for (AppRole role : appRoles){
-                if (role.getRoleName() == "Collaborateur" || role.getRoleName() == "Admin"){
-                    test = true;
+            if(appUser.getClient() != null){
+                if (clientRepository.findById(appUser.getClient().getId()).isPresent()){
+                    //Ici, si l'utilisateur est associé à un client, on lui affiche toutes les requettes qu'il a posté
+                    List<Requette> requettes = requetteRepository.listRequettesByClient(appUser.getClient().getId());
+                    List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
+                            .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
+                    log.info("Lister les requettes uniquement par client");
+                    return requetteDTOS;
+                }else {
+                    throw new ClientNotFoundException("Client not found at listerRequettes()...");
                 }
-            }
-            if (test == true){
+            } else {
                 //Ici, si l'utilisateur n'a pas le role "Client", on lui affiche toutes les requettes enregistrées en BD
                 List<Requette> requettes = requetteRepository.listOrderRequettes();
                 List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
                         .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
+                log.info("Lister les requettes uniquement pour l'admin et le collaborateur");
                 return requetteDTOS;
             }
-            if (appUser.getClient() != null){
-                //Ici, si l'utilisateur est associé à un client, on lui affiche toutes les requettes qu'il a posté
-                List<Requette> requettes = requetteRepository.listRequettesByClient(appUser.getClient().getId());
-                List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
-                        .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
-                return requetteDTOS;
-            } else {
-                throw new ClientNotFoundException("Client not found...");
-            }
-
-        } else {
+          } else {
            throw new UserNotFoundException("User not found....");
         }
     }
