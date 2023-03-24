@@ -8,7 +8,7 @@ import projet.suivie_requetes.ennums.StatusTache;
 import projet.suivie_requetes.entities.Collaborateur;
 import projet.suivie_requetes.entities.Tache;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public interface TacheRepository extends JpaRepository<Tache, Long> {
@@ -41,18 +41,29 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
             "WHERE (:idCollab = 0 OR tache.collaborateur_id = :idCollab) " +
             "AND (:id = 0 OR tache.id = :id) " +
             "AND (:idReq = 0 OR tache.requette_id = :idReq) " +
-            "AND (:statut IS NULL OR :statut = '' OR tache.status_tache = :statut) " +
+            "AND (:statut IS NULL OR :statut = '' OR tache.status_tache = :statut) "/* +
             "AND (:dateDebut IS NULL OR :dateDebut = '' OR tache.date_debut = :dateDebut) " +
             "AND (:dateFin IS NULL OR :dateFin = '' OR tache.date_fin = :dateFin) " +
             "AND (:dateDebutPrev IS NULL OR :dateDebutPrev = '' OR tache.debut_previsionel = :dateDebutPrev) " +
-            "AND (:dateFinPrev IS NULL OR :dateFinPrev = '' OR tache.fin_previsionel = :dateFinPrev) " +
+            "AND (:dateFinPrev IS NULL OR :dateFinPrev = '' OR tache.fin_previsionel = :dateFinPrev) "*/ +
             "ORDER BY tache.date_creation DESC",
             nativeQuery = true
     )
+    /*@Query("select t from Tache t " +
+            "left join t.collaborateur col " +
+            "left join t.requette req " +
+            "where (:idCollab is null or col.id = :idCollab) " +
+            "and (:idReq is null or req.id = :idReq) " +
+            "and (:statut is null or :statut = '' or t.statusTache = :statut) " +
+            "and (:dateDebut is null or :dateDebut = '' or t.dateDebut = :dateDebut) " +
+            "and (:dateFin is null or :dateFin = '' or t.dateFin = :dateFin) " +
+            "and (:dateDebutPrev is null or :dateDebutPrev = '' or t.debutPrevisionel = :dateDebutPrev) " +
+            "and (:dateFinPrev is null or :dateFinPrev = '' or t.finPrevisionel = :dateFinPrev) " +
+            "order by t.dateCreation desc")*/
     List<Tache> filterTache(@Param("id") Long idTache, @Param("idReq") Long idReq,
-                            @Param("idCollab") Long idCollab, @Param("statut") String statut,
+                            @Param("idCollab") Long idCollab, @Param("statut") String statut/*,
                             @Param("dateDebut") Date dateDebut, @Param("dateFin") Date dateFin,
-                            @Param("dateDebutPrev") Date dateDebutPrev, @Param("dateFinPrev") Date dateFinPrev);
+                            @Param("dateDebutPrev") Date dateDebutPrev, @Param("dateFinPrev") Date dateFinPrev*/);
 
     /*@Query("select new projet.suivie_requetes.dtos.TacheDTO(" +
             "t.id," +

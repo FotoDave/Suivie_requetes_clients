@@ -17,6 +17,7 @@ public class Requette {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date_creation;
+    private Date estimatedStartDate;
     private String intitule;
     private String module;
     private String fonctionnalite;

@@ -57,6 +57,12 @@ public class RequetteController {
         return requetteService.getOneRequette(id);
     }
 
+    @PutMapping("/requettes/estimatedStartDate")
+    @PreAuthorize("hasAnyAuthority('Admin','Collaborateur')")
+    public RequetteDTO estimatedStartDate(@RequestBody RequetteDTO requetteDTO) throws RequetteNotFoundException {
+        return requetteService.estimatedStartDate(requetteDTO);
+    }
+
     @GetMapping("/requettes/search")
     @PreAuthorize("hasAnyAuthority('Client','Admin','Collaborateur')")
     public List<RequetteDTO> searchRequette(@RequestParam String nom){

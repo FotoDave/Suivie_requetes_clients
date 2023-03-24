@@ -1,0 +1,430 @@
+2023-03-02 16:01:08.020 WAT [33442] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-02 16:01:08.020 WAT [33442] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-02 16:01:08.020 WAT [33442] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-02 16:02:34.433 WAT [33634] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-02 16:02:34.433 WAT [33634] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-02 16:02:34.433 WAT [33634] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-02 17:13:20.007 WAT [37002] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-02 17:13:20.007 WAT [37002] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-02 17:13:20.007 WAT [37002] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 09:02:22.649 WAT [53894] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-03 09:02:22.649 WAT [53894] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-03 09:02:22.661 WAT [53894] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 10:05:00.370 WAT [56766] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-03 10:05:00.370 WAT [56766] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-03 10:05:00.370 WAT [56766] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 10:05:51.939 WAT [56805] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-03 10:05:51.939 WAT [56805] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-03 10:05:51.939 WAT [56805] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 10:06:13.074 WAT [56872] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-03 10:06:13.074 WAT [56872] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-03 10:06:13.075 WAT [56872] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 10:06:16.030 WAT [56887] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-03 10:06:16.030 WAT [56887] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-03 10:06:16.030 WAT [56887] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 10:08:20.852 WAT [57024] FATAL:  le fichier de clé privé « /etc/ssl/private/ssl-cert-snakeoil.key » est accessible par le groupe et/ou par les
+	autres
+2023-03-03 10:08:20.852 WAT [57024] DÉTAIL:  Le fichier doit avoir les permissions u=rw (0600) ou moins si le propriétaire est le même que la base de données,
+	ou les permissions u=rw,g=r (0640) ou moins si le propriétaire est root.
+2023-03-03 10:08:20.853 WAT [57024] LOG:  le système de base de données est arrêté
+pg_ctl : n'a pas pu démarrer le serveur
+Examinez le journal applicatif.
+2023-03-03 10:13:24.828 WAT [57310] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-03 10:13:24.828 WAT [57310] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-03 10:13:24.828 WAT [57310] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-03 10:13:24.886 WAT [57310] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-03 10:13:25.079 WAT [57311] LOG:  le système de bases de données a été arrêté à 2023-03-02 16:01:04 WAT
+2023-03-03 10:13:25.186 WAT [57310] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-03 16:46:53.870 WAT [57310] LOG:  a reçu une demande d'arrêt rapide
+2023-03-03 16:46:57.088 WAT [57310] LOG:  annulation des transactions actives
+2023-03-03 16:46:58.830 WAT [57310] LOG:  processus en tâche de fond « logical replication launcher » (PID 57317) a quitté avec le code de sortie 1
+2023-03-03 16:47:00.120 WAT [57312] LOG:  arrêt en cours
+2023-03-03 16:47:09.744 WAT [57310] LOG:  le système de base de données est arrêté
+2023-03-03 16:52:36.922 WAT [1077] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-03 16:52:37.013 WAT [1077] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-03 16:52:37.013 WAT [1077] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-03 16:52:37.191 WAT [1077] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-03 16:52:39.153 WAT [1191] LOG:  le système de bases de données a été arrêté à 2023-03-03 16:47:08 WAT
+2023-03-03 16:52:40.275 WAT [1077] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-03 17:07:30.479 WAT [1077] LOG:  a reçu une demande d'arrêt rapide
+2023-03-03 17:07:31.158 WAT [1077] LOG:  annulation des transactions actives
+2023-03-03 17:07:31.162 WAT [1077] LOG:  processus en tâche de fond « logical replication launcher » (PID 1204) a quitté avec le code de sortie 1
+2023-03-03 17:07:31.162 WAT [1199] LOG:  arrêt en cours
+2023-03-03 17:07:32.333 WAT [1077] LOG:  le système de base de données est arrêté
+2023-03-03 17:08:52.506 WAT [1065] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-03 17:08:52.619 WAT [1065] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-03 17:08:52.620 WAT [1065] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-03 17:08:52.887 WAT [1065] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-03 17:08:55.237 WAT [1117] LOG:  le système de bases de données a été arrêté à 2023-03-03 17:07:32 WAT
+2023-03-03 17:08:56.060 WAT [1065] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-03 17:19:28.930 WAT [1065] LOG:  a reçu une demande d'arrêt rapide
+2023-03-03 17:19:30.174 WAT [1065] LOG:  annulation des transactions actives
+2023-03-03 17:19:30.184 WAT [1065] LOG:  processus en tâche de fond « logical replication launcher » (PID 1127) a quitté avec le code de sortie 1
+2023-03-03 17:19:30.185 WAT [1122] LOG:  arrêt en cours
+2023-03-03 17:19:31.137 WAT [1065] LOG:  le système de base de données est arrêté
+2023-03-03 17:23:57.113 WAT [1095] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-03 17:23:57.185 WAT [1095] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-03 17:23:57.185 WAT [1095] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-03 17:23:57.457 WAT [1095] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-03 17:23:59.633 WAT [1213] LOG:  le système de bases de données a été arrêté à 2023-03-03 17:19:30 WAT
+2023-03-03 17:24:01.030 WAT [1095] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-03 17:35:01.622 WAT [1089] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-03 17:35:01.847 WAT [1089] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-03 17:35:01.847 WAT [1089] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-03 17:35:02.086 WAT [1089] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-03 17:35:04.398 WAT [1175] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-03 17:29:01 WAT
+2023-03-03 17:35:44.940 WAT [1175] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-03 17:35:45.048 WAT [1175] LOG:  la ré-exécution commence à 0/1654568
+2023-03-03 17:35:45.048 WAT [1175] LOG:  longueur invalide de l'enregistrement à 0/1654650 : voulait 24, a eu 0
+2023-03-03 17:35:45.048 WAT [1175] LOG:  ré-exécution faite à 0/1654618
+2023-03-03 17:35:45.545 WAT [1089] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-03 17:52:19.626 WAT [1120] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-03 17:52:19.739 WAT [1120] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-03 17:52:19.740 WAT [1120] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-03 17:52:19.953 WAT [1120] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-03 17:52:22.057 WAT [1165] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-03 17:35:45 WAT
+2023-03-03 17:53:01.443 WAT [1165] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-03 17:53:01.552 WAT [1165] LOG:  la ré-exécution commence à 0/16546C8
+2023-03-03 17:53:01.552 WAT [1165] LOG:  longueur invalide de l'enregistrement à 0/1654700 : voulait 24, a eu 0
+2023-03-03 17:53:01.552 WAT [1165] LOG:  ré-exécution faite à 0/16546C8
+2023-03-03 17:53:02.062 WAT [1120] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-05 07:20:32.789 WAT [1102] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-05 07:20:32.947 WAT [1102] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-05 07:20:32.947 WAT [1102] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-05 07:20:33.083 WAT [1102] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-05 07:20:34.420 WAT [1185] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-03 17:53:01 WAT
+2023-03-05 07:21:14.477 WAT [1185] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-05 07:21:14.592 WAT [1185] LOG:  la ré-exécution commence à 0/1654778
+2023-03-05 07:21:14.593 WAT [1185] LOG:  longueur invalide de l'enregistrement à 0/16547B0 : voulait 24, a eu 0
+2023-03-05 07:21:14.593 WAT [1185] LOG:  ré-exécution faite à 0/1654778
+2023-03-05 07:21:15.149 WAT [1102] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-06 08:21:51.346 WAT [1088] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-06 08:21:51.682 WAT [1088] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-06 08:21:51.683 WAT [1088] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-06 08:21:51.968 WAT [1088] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-06 08:21:55.671 WAT [1211] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-05 07:21:15 WAT
+2023-03-06 08:22:46.875 WAT [1211] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-06 08:22:46.939 WAT [1211] LOG:  la ré-exécution commence à 0/1654828
+2023-03-06 08:22:46.939 WAT [1211] LOG:  longueur invalide de l'enregistrement à 0/1654860 : voulait 24, a eu 0
+2023-03-06 08:22:46.939 WAT [1211] LOG:  ré-exécution faite à 0/1654828
+2023-03-06 08:22:47.592 WAT [1088] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-06 10:36:11.679 WAT [11325] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:36:11.679 WAT [11325] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:36:29.872 WAT [11349] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:36:29.872 WAT [11349] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:36:29.875 WAT [11350] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:36:29.875 WAT [11350] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:36:54.203 WAT [11356] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:36:54.203 WAT [11356] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:36:54.205 WAT [11357] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:36:54.205 WAT [11357] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:42:42.257 WAT [11550] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:42:42.257 WAT [11550] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:42:42.261 WAT [11551] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:42:42.261 WAT [11551] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:43:13.552 WAT [11556] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:43:13.552 WAT [11556] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:43:48.681 WAT [11581] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:43:48.681 WAT [11581] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:43:48.685 WAT [11582] postgres@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « postgres »
+2023-03-06 10:43:48.685 WAT [11582] postgres@postgres DÉTAIL:  L'utilisateur « postgres » n'a pas de mot de passe affecté.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:47:10.604 WAT [11705] root@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « root »
+2023-03-06 10:47:10.604 WAT [11705] root@postgres DÉTAIL:  Le rôle « root » n'existe pas.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:47:10.607 WAT [11706] root@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « root »
+2023-03-06 10:47:10.607 WAT [11706] root@postgres DÉTAIL:  Le rôle « root » n'existe pas.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:50:10.091 WAT [11998] root@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « root »
+2023-03-06 10:50:10.091 WAT [11998] root@postgres DÉTAIL:  Le rôle « root » n'existe pas.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:50:16.414 WAT [12000] root@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « root »
+2023-03-06 10:50:16.414 WAT [12000] root@postgres DÉTAIL:  Le rôle « root » n'existe pas.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 10:50:16.416 WAT [12001] root@postgres FATAL:  authentification par mot de passe échouée pour l'utilisateur  « root »
+2023-03-06 10:50:16.416 WAT [12001] root@postgres DÉTAIL:  Le rôle « root » n'existe pas.
+	La connexion correspond à la ligne 96 du pg_hba.conf : « host    all             all             127.0.0.1/32            md5 »
+2023-03-06 11:05:39.437 WAT [12920] root@SUIVIE FATAL:  la base de données « SUIVIE » n'existe pas
+2023-03-06 11:07:40.827 WAT [13183] root@SUIVIE FATAL:  la base de données « SUIVIE » n'existe pas
+2023-03-06 11:07:42.643 WAT [13192] root@SUIVIE FATAL:  la base de données « SUIVIE » n'existe pas
+2023-03-06 11:10:07.152 WAT [12242] postgres@postgres ERREUR:  erreur de syntaxe sur ou près de « GRANT » au caractère 24
+2023-03-06 11:10:07.152 WAT [12242] postgres@postgres INSTRUCTION :  CREATE DATABASE SUIVIE
+	GRANT ALL PRIVILEGES ON DATABASE SUIVIE TO root;
+2023-03-06 11:17:57.586 WAT [13766] root@postgres ERREUR:  la contrainte « uk_p9nklicxkyo2ex9mv9yxxfufc » de la relation « file_upload » n'existe pas
+2023-03-06 11:17:57.586 WAT [13766] root@postgres INSTRUCTION :  alter table file_upload drop constraint UK_p9nklicxkyo2ex9mv9yxxfufc
+2023-03-06 11:27:34.753 WAT [14694] root@SUIVIE FATAL:  la base de données « SUIVIE » n'existe pas
+2023-03-06 11:27:36.590 WAT [14703] root@SUIVIE FATAL:  la base de données « SUIVIE » n'existe pas
+2023-03-06 11:28:10.239 WAT [14850] root@suivie ERREUR:  la contrainte « uk_p9nklicxkyo2ex9mv9yxxfufc » de la relation « file_upload » n'existe pas
+2023-03-06 11:28:10.239 WAT [14850] root@suivie INSTRUCTION :  alter table file_upload drop constraint UK_p9nklicxkyo2ex9mv9yxxfufc
+2023-03-06 16:11:49.168 WAT [40885] root@postgres LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-06 16:11:49.168 WAT [40887] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-07 16:58:36.539 WAT [76400] root@suivie ERREUR:  l'argument de JOIN/ON doit être de type boolean, et non du type bigint au caractère 47
+2023-03-07 16:58:36.539 WAT [76400] root@suivie INSTRUCTION :  SELECT * FROM requette INNER JOIN app_user ON requette.requette_app_user_id WHERE ($1 = 0 OR requette.id = $2) AND ($3 IS NULL OR $4 = '' OR requette.intitule = $5) AND ($6 IS NULL OR $7 = '' OR requette.type_requette = $8) AND ($9 IS NULL OR $10 = '' OR requette.status_requette = $11) AND ($12 = 0 OR app_user.utilisateur_client_id = $13) ORDER BY requette.date_creation DESC
+2023-03-07 16:58:37.473 WAT [76400] root@suivie ERREUR:  l'argument de JOIN/ON doit être de type boolean, et non du type bigint au caractère 47
+2023-03-07 16:58:37.473 WAT [76400] root@suivie INSTRUCTION :  SELECT * FROM requette INNER JOIN app_user ON requette.requette_app_user_id WHERE ($1 = 0 OR requette.id = $2) AND ($3 IS NULL OR $4 = '' OR requette.intitule = $5) AND ($6 IS NULL OR $7 = '' OR requette.type_requette = $8) AND ($9 IS NULL OR $10 = '' OR requette.status_requette = $11) AND ($12 = 0 OR app_user.utilisateur_client_id = $13) ORDER BY requette.date_creation DESC
+2023-03-10 08:06:58.456 WAT [142719] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.456 WAT [144035] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.456 WAT [142632] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142879] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142536] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142629] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142722] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142670] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142690] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:58.455 WAT [142636] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-10 08:06:59.503 WAT [1088] LOG:  a reçu une demande d'arrêt rapide
+2023-03-10 08:07:00.431 WAT [1088] LOG:  annulation des transactions actives
+2023-03-10 08:07:01.752 WAT [1088] LOG:  processus en tâche de fond « logical replication launcher » (PID 1597) a quitté avec le code de sortie 1
+2023-03-10 08:07:02.797 WAT [1592] LOG:  arrêt en cours
+2023-03-10 08:07:08.970 WAT [1088] LOG:  le système de base de données est arrêté
+2023-03-10 08:51:54.789 WAT [1124] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-10 08:51:55.000 WAT [1124] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-10 08:51:55.000 WAT [1124] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-10 08:51:55.146 WAT [1124] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-10 08:51:57.098 WAT [1189] LOG:  le système de bases de données a été arrêté à 2023-03-10 08:07:08 WAT
+2023-03-10 08:51:59.112 WAT [1124] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-10 09:41:24.085 WAT [6335] root@suivie ERREUR:  la colonne « NON_TRAITE » n'existe pas au caractère 123
+2023-03-10 09:41:24.085 WAT [6335] root@suivie INSTRUCTION :  SELECT * FROM requette
+	LEFT JOIN app_user ON app_user.id = requette.requette_app_user_id
+	WHERE requette.status_requette = "NON_TRAITE"
+2023-03-10 09:44:33.529 WAT [6335] root@suivie ERREUR:  l'opérateur n'existe pas : timestamp without time zone = integer au caractère 119
+2023-03-10 09:44:33.529 WAT [6335] root@suivie ASTUCE :  Aucun opérateur ne correspond au nom donné et aux types d'arguments.
+	Vous devez ajouter des conversions explicites de type.
+2023-03-10 09:44:33.529 WAT [6335] root@suivie INSTRUCTION :  SELECT * FROM requette
+	LEFT JOIN app_user ON app_user.id = requette.requette_app_user_id
+	WHERE requette.date_creation = 2023-03-07
+2023-03-13 12:01:36.480 WAT [56929] root@suivie ERREUR:  l'argument de JOIN/ON doit être de type boolean, et non du type bigint au caractère 47
+2023-03-13 12:01:36.480 WAT [56929] root@suivie INSTRUCTION :  SELECT * FROM requette INNER JOIN app_user ON requette.requette_app_user_id WHERE ($1 = 0 OR requette.id = $2) AND ($3 IS NULL OR $4 = '' OR requette.intitule = $5) AND ($6 IS NULL OR $7 = '' OR requette.type_requette = $8) AND ($9 IS NULL OR $10 = '' OR requette.status_requette = $11) AND ($12 = 0 OR app_user.utilisateur_client_id = $13) ORDER BY requette.date_creation DESC
+2023-03-13 17:00:45.040 WAT [1159] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-13 17:00:45.221 WAT [1159] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-13 17:00:45.221 WAT [1159] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-13 17:00:45.381 WAT [1159] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-13 17:00:47.072 WAT [1199] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-10 08:56:59 WAT
+2023-03-13 17:01:34.399 WAT [1199] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-13 17:01:34.476 WAT [1199] LOG:  la ré-exécution commence à 0/1706100
+2023-03-13 17:01:34.476 WAT [1199] LOG:  longueur invalide de l'enregistrement à 0/17061E8 : voulait 24, a eu 0
+2023-03-13 17:01:34.476 WAT [1199] LOG:  ré-exécution faite à 0/17061B0
+2023-03-13 17:01:35.007 WAT [1159] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-16 08:00:07.818 WAT [70019] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70073] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [69986] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70053] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70079] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70142] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.820 WAT [55521] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70144] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70013] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [69995] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:07.818 WAT [70143] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:08.871 WAT [55516] root@postgres LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 08:00:13.963 WAT [1159] LOG:  a reçu une demande d'arrêt rapide
+2023-03-16 08:00:14.192 WAT [1159] LOG:  annulation des transactions actives
+2023-03-16 08:00:14.710 WAT [1159] LOG:  processus en tâche de fond « logical replication launcher » (PID 1603) a quitté avec le code de sortie 1
+2023-03-16 08:00:15.293 WAT [1598] LOG:  arrêt en cours
+2023-03-16 08:00:19.388 WAT [1159] LOG:  le système de base de données est arrêté
+2023-03-16 09:29:22.240 WAT [1068] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-16 09:29:22.477 WAT [1068] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-16 09:29:22.477 WAT [1068] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-16 09:29:22.676 WAT [1068] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-16 09:29:24.172 WAT [1178] LOG:  le système de bases de données a été arrêté à 2023-03-16 08:00:18 WAT
+2023-03-16 09:29:26.237 WAT [1068] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-16 15:28:37.322 WAT [18866] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18865] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18860] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18863] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18870] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18869] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18864] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18867] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18871] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 15:28:37.322 WAT [18868] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21532] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21550] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21552] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21548] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21551] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21546] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21549] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21545] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21553] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 16:06:58.685 WAT [21547] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25929] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25935] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25928] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25936] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25932] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25924] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25930] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25933] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25927] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 17:00:51.159 WAT [25934] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-16 18:05:04.235 WAT [28690] root@suivie ERREUR:  valeur trop longue pour le type character varying(255)
+2023-03-16 18:05:04.235 WAT [28690] root@suivie INSTRUCTION :  update requette set requette_app_user_id=$1, date_creation=$2, fonctionnalite=$3, intitule=$4, module=$5, observation=$6, status_requette=$7, type_requette=$8, urgence=$9 where id=$10
+2023-03-16 18:05:06.660 WAT [28689] root@suivie ERREUR:  valeur trop longue pour le type character varying(255)
+2023-03-16 18:05:06.660 WAT [28689] root@suivie INSTRUCTION :  update requette set requette_app_user_id=$1, date_creation=$2, fonctionnalite=$3, intitule=$4, module=$5, observation=$6, status_requette=$7, type_requette=$8, urgence=$9 where id=$10
+2023-03-16 18:05:11.437 WAT [28691] root@suivie ERREUR:  valeur trop longue pour le type character varying(255)
+2023-03-16 18:05:11.437 WAT [28691] root@suivie INSTRUCTION :  update requette set requette_app_user_id=$1, date_creation=$2, fonctionnalite=$3, intitule=$4, module=$5, observation=$6, status_requette=$7, type_requette=$8, urgence=$9 where id=$10
+2023-03-16 18:05:17.321 WAT [28689] root@suivie ERREUR:  valeur trop longue pour le type character varying(255)
+2023-03-16 18:05:17.321 WAT [28689] root@suivie INSTRUCTION :  update requette set requette_app_user_id=$1, date_creation=$2, fonctionnalite=$3, intitule=$4, module=$5, observation=$6, status_requette=$7, type_requette=$8, urgence=$9 where id=$10
+2023-03-16 18:05:25.366 WAT [28691] root@suivie ERREUR:  valeur trop longue pour le type character varying(255)
+2023-03-16 18:05:25.366 WAT [28691] root@suivie INSTRUCTION :  update requette set requette_app_user_id=$1, date_creation=$2, fonctionnalite=$3, intitule=$4, module=$5, observation=$6, status_requette=$7, type_requette=$8, urgence=$9 where id=$10
+2023-03-16 18:22:20.796 WAT [30724] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-16 18:22:20.796 WAT [30724] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-16 18:22:20.796 WAT [30728] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-16 18:22:20.796 WAT [30728] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-16 18:22:58.916 WAT [30734] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-16 18:22:58.916 WAT [30734] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-16 18:22:59.059 WAT [30729] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-16 18:22:59.059 WAT [30729] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-16 18:23:01.376 WAT [30728] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-16 18:23:01.376 WAT [30728] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-16 18:23:01.378 WAT [30724] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-16 18:23:01.378 WAT [30724] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-16 18:24:41.883 WAT [30728] root@suivie ERREUR:  erreur de syntaxe sur ou près de « where » au caractère 468
+2023-03-16 18:24:41.883 WAT [30728] root@suivie INSTRUCTION :  select tache0_.id as id1_8_, tache0_.collaborateur_id as collabo10_8_, tache0_.date_creation as date_cre2_8_, tache0_.date_debut as date_deb3_8_, tache0_.date_fin as date_fin4_8_, tache0_.debut_previsionel as debut_pr5_8_, tache0_.fin_previsionel as fin_prev6_8_, tache0_.intitule as intitule7_8_, tache0_.observation as observat8_8_, tache0_.requette_id as requett11_8_, tache0_.status_tache as status_t9_8_ from tache tache0_ left outer join requette requette1_ on where requette1_.id=$1
+2023-03-16 18:27:17.851 WAT [30724] root@suivie ERREUR:  erreur de syntaxe sur ou près de « where » au caractère 468
+2023-03-16 18:27:17.851 WAT [30724] root@suivie INSTRUCTION :  select tache0_.id as id1_8_, tache0_.collaborateur_id as collabo10_8_, tache0_.date_creation as date_cre2_8_, tache0_.date_debut as date_deb3_8_, tache0_.date_fin as date_fin4_8_, tache0_.debut_previsionel as debut_pr5_8_, tache0_.fin_previsionel as fin_prev6_8_, tache0_.intitule as intitule7_8_, tache0_.observation as observat8_8_, tache0_.requette_id as requett11_8_, tache0_.status_tache as status_t9_8_ from tache tache0_ left outer join requette requette1_ on where requette1_.id=$1
+2023-03-16 18:34:34.663 WAT [30724] root@suivie ERREUR:  erreur de syntaxe sur ou près de « where » au caractère 468
+2023-03-16 18:34:34.663 WAT [30724] root@suivie INSTRUCTION :  select tache0_.id as id1_8_, tache0_.collaborateur_id as collabo10_8_, tache0_.date_creation as date_cre2_8_, tache0_.date_debut as date_deb3_8_, tache0_.date_fin as date_fin4_8_, tache0_.debut_previsionel as debut_pr5_8_, tache0_.fin_previsionel as fin_prev6_8_, tache0_.intitule as intitule7_8_, tache0_.observation as observat8_8_, tache0_.requette_id as requett11_8_, tache0_.status_tache as status_t9_8_ from tache tache0_ left outer join requette requette1_ on where requette1_.id=$1
+2023-03-17 07:58:34.036 WAT [1063] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-17 07:58:34.394 WAT [1063] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-17 07:58:34.395 WAT [1063] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-17 07:58:34.782 WAT [1063] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-17 07:58:36.556 WAT [1206] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-16 18:29:36 WAT
+2023-03-17 07:59:25.739 WAT [1206] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-17 07:59:25.817 WAT [1206] LOG:  la ré-exécution commence à 0/191FE00
+2023-03-17 07:59:25.817 WAT [1206] LOG:  longueur invalide de l'enregistrement à 0/191FEE8 : voulait 24, a eu 0
+2023-03-17 07:59:25.818 WAT [1206] LOG:  ré-exécution faite à 0/191FEB0
+2023-03-17 07:59:26.737 WAT [1063] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-17 16:15:59.136 WAT [16568] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16516] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16569] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16525] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16623] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16591] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.136 WAT [16611] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16562] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.136 WAT [16561] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:15:59.135 WAT [16576] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-17 16:16:03.842 WAT [1063] LOG:  a reçu une demande d'arrêt rapide
+2023-03-17 16:16:04.184 WAT [1063] LOG:  annulation des transactions actives
+2023-03-17 16:16:04.539 WAT [1063] LOG:  processus en tâche de fond « logical replication launcher » (PID 1611) a quitté avec le code de sortie 1
+2023-03-17 16:16:04.866 WAT [1606] LOG:  arrêt en cours
+2023-03-17 16:16:07.592 WAT [1063] LOG:  le système de base de données est arrêté
+2023-03-17 16:17:47.883 WAT [1067] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-17 16:17:48.103 WAT [1067] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-17 16:17:48.103 WAT [1067] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-17 16:17:48.300 WAT [1067] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-17 16:17:50.048 WAT [1152] LOG:  le système de bases de données a été arrêté à 2023-03-17 16:16:06 WAT
+2023-03-17 16:17:51.712 WAT [1067] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-17 16:51:27.520 WAT [1087] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-17 16:51:27.765 WAT [1087] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-17 16:51:27.765 WAT [1087] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-17 16:51:27.898 WAT [1087] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-17 16:51:29.496 WAT [1185] LOG:  le système de bases de données a été interrompu ; dernier lancement connu à 2023-03-17 16:22:52 WAT
+2023-03-17 16:52:09.453 WAT [1185] LOG:  le système de bases de données n'a pas été arrêté proprement ; restauration
+	automatique en cours
+2023-03-17 16:52:09.512 WAT [1185] LOG:  la ré-exécution commence à 0/1920060
+2023-03-17 16:52:09.512 WAT [1185] LOG:  longueur invalide de l'enregistrement à 0/1920148 : voulait 24, a eu 0
+2023-03-17 16:52:09.513 WAT [1185] LOG:  ré-exécution faite à 0/1920110
+2023-03-17 16:52:10.068 WAT [1087] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-18 16:08:18.798 WAT [12268] root@suivie ERREUR:  erreur de syntaxe sur ou près de « where » au caractère 468
+2023-03-18 16:08:18.798 WAT [12268] root@suivie INSTRUCTION :  select tache0_.id as id1_8_, tache0_.collaborateur_id as collabo10_8_, tache0_.date_creation as date_cre2_8_, tache0_.date_debut as date_deb3_8_, tache0_.date_fin as date_fin4_8_, tache0_.debut_previsionel as debut_pr5_8_, tache0_.fin_previsionel as fin_prev6_8_, tache0_.intitule as intitule7_8_, tache0_.observation as observat8_8_, tache0_.requette_id as requett11_8_, tache0_.status_tache as status_t9_8_ from tache tache0_ left outer join requette requette1_ on where requette1_.id=$1
+2023-03-18 16:16:41.678 WAT [12268] root@suivie ERREUR:  erreur de syntaxe sur ou près de « where » au caractère 468
+2023-03-18 16:16:41.678 WAT [12268] root@suivie INSTRUCTION :  select tache0_.id as id1_8_, tache0_.collaborateur_id as collabo10_8_, tache0_.date_creation as date_cre2_8_, tache0_.date_debut as date_deb3_8_, tache0_.date_fin as date_fin4_8_, tache0_.debut_previsionel as debut_pr5_8_, tache0_.fin_previsionel as fin_prev6_8_, tache0_.intitule as intitule7_8_, tache0_.observation as observat8_8_, tache0_.requette_id as requett11_8_, tache0_.status_tache as status_t9_8_ from tache tache0_ left outer join requette requette1_ on where requette1_.id=$1
+2023-03-18 16:38:51.157 WAT [14425] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-18 16:38:51.157 WAT [14425] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-18 16:38:51.360 WAT [14425] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-18 16:38:51.360 WAT [14425] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-18 17:10:04.953 WAT [15684] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-18 17:10:04.953 WAT [15684] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-18 17:10:05.051 WAT [15684] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-18 17:10:05.051 WAT [15684] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-18 18:02:38.066 WAT [21981] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.066 WAT [21975] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21977] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21979] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21972] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21976] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21978] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21982] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.067 WAT [21980] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:02:38.066 WAT [21983] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-18 18:14:57.680 WAT [22997] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-18 18:14:57.680 WAT [22997] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-18 18:15:02.954 WAT [22997] root@suivie ERREUR:  n'a pas pu déterminer le type de données du paramètre $10
+2023-03-18 18:15:02.954 WAT [22997] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-20 14:05:06.410 WAT [38155] root@postgres LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-20 14:05:06.410 WAT [38156] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-20 14:05:13.490 WAT [1087] LOG:  a reçu une demande d'arrêt rapide
+2023-03-20 14:05:13.778 WAT [1087] LOG:  annulation des transactions actives
+2023-03-20 14:05:13.946 WAT [1087] LOG:  processus en tâche de fond « logical replication launcher » (PID 1574) a quitté avec le code de sortie 1
+2023-03-20 14:05:14.540 WAT [1569] LOG:  arrêt en cours
+2023-03-20 14:05:18.989 WAT [1087] LOG:  le système de base de données est arrêté
+2023-03-20 14:09:33.740 WAT [1096] LOG:  démarrage de PostgreSQL 12.14 (Ubuntu 12.14-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, 64-bit
+2023-03-20 14:09:33.904 WAT [1096] LOG:  en écoute sur IPv4, adresse « 0.0.0.0 », port 5432
+2023-03-20 14:09:33.904 WAT [1096] LOG:  en écoute sur IPv6, adresse « :: », port 5432
+2023-03-20 14:09:34.100 WAT [1096] LOG:  écoute sur la socket Unix « /var/run/postgresql/.s.PGSQL.5432 »
+2023-03-20 14:09:35.638 WAT [1190] LOG:  le système de bases de données a été arrêté à 2023-03-20 14:05:18 WAT
+2023-03-20 14:09:39.072 WAT [1096] LOG:  le système de bases de données est prêt pour accepter les connexions
+2023-03-20 15:01:56.429 WAT [6147] root@suivie ERREUR:  syntaxe en entrée invalide pour le type date : «  » au caractère 217
+2023-03-20 15:01:56.429 WAT [6147] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-20 15:01:57.774 WAT [6147] root@suivie ERREUR:  syntaxe en entrée invalide pour le type date : «  » au caractère 217
+2023-03-20 15:01:57.774 WAT [6147] root@suivie INSTRUCTION :  SELECT * FROM tache WHERE ($1 = 0 OR tache.collaborateur_id = $2) AND ($3 = 0 OR tache.id = $4) AND ($5 = 0 OR tache.requette_id = $6) AND ($7 IS NULL OR $8 = '' OR tache.status_tache = $9) AND ($10 IS NULL OR $11 = '' OR tache.date_debut = $12) AND ($13 IS NULL OR $14 = '' OR tache.date_fin = $15) AND ($16 IS NULL OR $17 = '' OR tache.debut_previsionel = $18) AND ($19 IS NULL OR $20 = '' OR tache.fin_previsionel = $21) ORDER BY tache.date_creation DESC
+2023-03-21 21:31:07.093 WAT [25066] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25076] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25069] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25072] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25074] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25070] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25071] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25075] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25073] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant
+2023-03-21 21:31:07.093 WAT [25077] root@suivie LOG:  n'a pas pu recevoir les données du client : Connexion ré-initialisée par le correspondant

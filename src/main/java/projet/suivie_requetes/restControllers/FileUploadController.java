@@ -47,6 +47,17 @@ public class FileUploadController {
         fileUploadDTO.setElementId(Long.valueOf(id));
         return new ResponseEntity<>(fileUploadService.uploadFile(file, fileUploadDTO), HttpStatus.OK);
     }
+    @PutMapping("/file")
+    @PreAuthorize("hasAnyAuthority('Admin', 'Collaborateur', 'Client')")
+    public ResponseEntity<FileUploadDTO> updateFile(@RequestParam("file") MultipartFile file,
+                                                @RequestParam("element") String element,
+                                                @RequestParam("id") String id)
+            throws IOException, CommentaireNotFoundException, TacheNotFoundException, RequetteNotFoundException {
+        FileUploadDTO fileUploadDTO = new FileUploadDTO();
+        fileUploadDTO.setElement(element);
+        fileUploadDTO.setElementId(Long.valueOf(id));
+        return new ResponseEntity<>(fileUploadService.uploadFile(file, fileUploadDTO), HttpStatus.OK);
+    }
 
     @GetMapping("/file")
     @PreAuthorize("hasAnyAuthority('Admin', 'Collaborateur', 'Client')")

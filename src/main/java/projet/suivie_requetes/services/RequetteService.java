@@ -15,6 +15,8 @@ public interface RequetteService {
 
     List<RequetteDTO> filterRequette(String typeRequette, String statusRequette, String intitule, Long idClient, Long id);
 
+    RequetteDTO estimatedStartDate(RequetteDTO requetteDTO) throws RequetteNotFoundException;
+
     RequetteDTO getOneRequette(Long id);
     List<RequetteDTO> searchRequette(String nom);
 

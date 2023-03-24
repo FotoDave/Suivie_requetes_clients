@@ -14,6 +14,7 @@ import java.util.Date;
 public class RequetteDTO {
     private Long id;
     private Date date_creation;
+    private Date estimatedStartDate;
     private String intitule;
     private String module;
     private String fonctionnalite;

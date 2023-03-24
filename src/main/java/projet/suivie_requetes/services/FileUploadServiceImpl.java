@@ -63,7 +63,6 @@ public class FileUploadServiceImpl implements FileUploadService {
         fileUploadDTO.setSize(file.getSize());
         //Chemin d'accès du dossier qui contiendra les fichiers uploadés
         Path directory = Paths.get("/home/wallace/Documents/Prog_Spring/Suivie_requetes/Files-Uploaded");
-
         //Ici je crée un code alpha-numérique decaractère qui sera le code unique à chaque fichier uploadé
         fileUploadDTO.setFileCode(RandomStringUtils.randomAlphanumeric(10));
         try {

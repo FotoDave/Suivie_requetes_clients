@@ -14,9 +14,9 @@ public interface TacheService {
     TacheDTO creerTache(TacheDTO tacheDTO) throws CollaborateurNotFoundException, RequetteNotFoundException, TacheAlreadyExistException;
     TacheDTO modifierStatutTache(TacheDTO tacheDTO) throws TacheNotFoundException, RequetteNotFoundException;
     List<TacheDTO> filterTaches(Long idTache, Long idReq,
-                                Long idCollab, String statut,
+                                Long idCollab, String statut/*,
                                 Date dateDebut, Date dateFin,
-                                Date dateDebutPrev, Date dateFinPrev);
+                                Date dateDebutPrev, Date dateFinPrev*/);
     List<TacheDTO> listerTache();
     TacheDTO getOneTache(Long id) throws TacheNotFoundException;
     TacheDTO planifierTache(TacheDTO tacheDTO) throws TacheNotFoundException;

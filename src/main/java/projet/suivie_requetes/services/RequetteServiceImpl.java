@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projet.suivie_requetes.dtos.RequetteDTO;
 import projet.suivie_requetes.ennums.StatusRequette;
-import projet.suivie_requetes.ennums.TypeRequette;
 import projet.suivie_requetes.entities.Client;
 import projet.suivie_requetes.entities.Requette;
 import projet.suivie_requetes.exceptions.ClientNotFoundException;
@@ -19,10 +18,7 @@ import projet.suivie_requetes.security.entities.AppUser;
 import projet.suivie_requetes.security.repository.AppUserRepository;
 import projet.suivie_requetes.security.service.SecurityServiceImpl;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,21 +44,9 @@ public class RequetteServiceImpl implements RequetteService {
         Optional<AppUser> appUserOptional = Optional.ofNullable(appUserRepository.findByUsername(username));
         if (appUserOptional.isPresent()){
             AppUser appUser = appUserOptional.get();
-            Optional<Client> clientOptional = Optional.ofNullable(appUser.getClient());
-            Boolean test = false;
-            List<AppRole> roleList = (List<AppRole>) appUser.getAppRoles();
-                for (AppRole role : roleList){
-                    //ici on spécifie que l'utilisateur avec le role "Admin" peut aussi créer les requettes
-                    if (role.getRoleName() == "Admin"){
-                        test = true;
-                    }
-                }
-                if (clientOptional.isPresent() || test == true){
-                    //On enregistre l'utilisateur qui a créer la requette
-                    requette.setAppUser(appUser);
-                }
+            requette.setAppUser(appUser);
         }else{
-            throw new ClientNotFoundException("Client not found or User not found...");
+            throw new UserNotFoundException("User not found...");
         }
         requette.setStatusRequette(StatusRequette.NON_TRAITE);
         requetteRepository.save(requette);
@@ -109,6 +93,19 @@ public class RequetteServiceImpl implements RequetteService {
         List<RequetteDTO> requetteDTOS = requettes.stream().map(requette -> dtoMapper
                 .fromRequettetoRequetteDTO(requette)).collect(Collectors.toList());
         return requetteDTOS;
+    }
+
+    @Override
+    public RequetteDTO estimatedStartDate(RequetteDTO requetteDTO) throws RequetteNotFoundException {
+        log.info("Date de début prévisionnel de la requette...");
+        if (requetteRepository.findById(requetteDTO.getId()).isPresent()){
+            Requette requette = requetteRepository.findById(requetteDTO.getId()).get();
+            requette.setEstimatedStartDate(requetteDTO.getEstimatedStartDate());
+            requetteRepository.save(requette);
+            return dtoMapper.fromRequettetoRequetteDTO(requette);
+        }else {
+            throw new RequetteNotFoundException("Requette not found at estimated start date...");
+        }
     }
 
     @Override

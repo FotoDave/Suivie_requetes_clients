@@ -143,25 +143,15 @@ public class TacheServiceImpl implements TacheService {
 
     @Override
     public List<TacheDTO> filterTaches(Long idTache, Long idReq,
-                                       Long idCollab, String statut,
+                                       Long idCollab, String statut/*,
                                        Date dateDebut, Date dateFin,
-                                       Date dateDebutPrev, Date dateFinPrev){
-        log.info("Filtre des taches");
-        log.info("********Elément de la tache recu en paramètre : *******");
-        log.info("idTache : "+idTache);
-        log.info("idReq : "+idReq);
-        log.info("idCollab : "+idCollab);
-        log.info("statut : "+statut);
-        log.info("dateDebut : "+dateDebut);
-        log.info("dateFin : "+dateFin);
-        log.info("dateDebutPrev : "+dateDebutPrev);
-        log.info("dateFinPrev : "+dateFinPrev);
+                                       Date dateDebutPrev, Date dateFinPrev*/){
         List<Tache> taches = tacheRepository.filterTache(idTache == null ? 0 : idTache, idReq == null ? 0 : idReq,
-                idCollab == null ? 0 : idCollab, statut,
-                dateDebut == null ? null : FunctionUtils.convertUtilToSql(dateDebut),
-                dateFin == null ? null : FunctionUtils.convertUtilToSql(dateFin),
-                dateDebutPrev == null ? null : FunctionUtils.convertUtilToSql(dateDebutPrev),
-                dateFinPrev == null ? null : FunctionUtils.convertUtilToSql(dateFinPrev));
+                idCollab == null ? 0 : idCollab, statut/*,
+                dateDebut == null ? null : dateDebut,
+                dateFin == null ? null : dateFin,
+                dateDebutPrev == null ? null : dateDebutPrev,
+                dateFinPrev == null ? null : dateFinPrev*/);
         List<TacheDTO> tacheDTOS = taches.stream().map(tache ->
                 dtoMapper.fromTachetoTacheDTO(tache)).collect(Collectors.toList());
 

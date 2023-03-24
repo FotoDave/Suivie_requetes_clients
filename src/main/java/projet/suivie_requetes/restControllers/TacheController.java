@@ -34,20 +34,20 @@ public class TacheController {
             @RequestParam(name = "idTache", required = false, defaultValue = "") String idTache,
             @RequestParam(name = "idReq", required = false, defaultValue = "") String idReq,
             @RequestParam(name = "idCollab", required = false, defaultValue = "") String idCollab,
-            @RequestParam(name = "statut", required = false, defaultValue = "") String statut,
-            @RequestParam(name = "dateDebut", required = false, defaultValue = "") String dateDebut,
+            @RequestParam(name = "statut", required = false, defaultValue = "") String statut
+            /*@RequestParam(name = "dateDebut", required = false, defaultValue = "") String dateDebut,
             @RequestParam(name = "dateFin", required = false, defaultValue = "") String dateFin,
             @RequestParam(name = "dateDebutPrev", required = false, defaultValue = "") String dateDebutPrev,
-            @RequestParam(name = "dateFinPrev", required = false, defaultValue = "") String dateFinPrev) {
+            @RequestParam(name = "dateFinPrev", required = false, defaultValue = "") String dateFinPrev*/) {
         Long idTacheValue = FunctionUtils.convertStringToLong(idTache);
         Long idReqValue = FunctionUtils.convertStringToLong(idReq);
         Long idCollabValue = FunctionUtils.convertStringToLong(idCollab);
-        Date dateDebutValue = FunctionUtils.convertStringToDate(dateDebut);
+        /*Date dateDebutValue = FunctionUtils.convertStringToDate(dateDebut);
         Date dateFinValue = FunctionUtils.convertStringToDate(dateFin);
         Date dateDebutPrevValue = FunctionUtils.convertStringToDate(dateDebutPrev);
-        Date dateFinPrevValue = FunctionUtils.convertStringToDate(dateFinPrev);
-        return tacheService.filterTaches(idTacheValue, idReqValue, idCollabValue, statut,
-                dateDebutValue, dateFinValue, dateDebutPrevValue, dateFinPrevValue);
+        Date dateFinPrevValue = FunctionUtils.convertStringToDate(dateFinPrev);*/
+        return tacheService.filterTaches(idTacheValue, idReqValue, idCollabValue, statut/*,
+                dateDebutValue, dateFinValue, dateDebutPrevValue, dateFinPrevValue*/);
     }
 
     @GetMapping("/taches")
