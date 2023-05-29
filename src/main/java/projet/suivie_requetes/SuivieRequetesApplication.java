@@ -31,17 +31,17 @@ public class SuivieRequetesApplication {
     @Bean
     CommandLineRunner commandLineRunner(SecurityServiceImpl service, AppUserRepository appUserRepository) {
         return args -> {
-            /*AppRole appRole1 = new AppRole(null,"Admin");
+            AppRole appRole1 = new AppRole(null,"Admin");
             AppRole appRole2 = new AppRole(null,"Collaborateur");
             AppRole appRole3 = new AppRole(null,"Client");
             service.addNewRole(appRole1);
             service.addNewRole(appRole2);
-            service.addNewRole(appRole3);*/
+            service.addNewRole(appRole3);
             ArrayList<String> roles = new ArrayList<String>();
             roles.add("Admin");
             AppUserDto userDto = new AppUserDto();
-            userDto.setUsername("Admin");
-            userDto.setPassword("1234");
+            userDto.setUsername("SuperUser");
+            userDto.setPassword("Hello1234");
             userDto.setRoles(roles);
             if(Optional.ofNullable(appUserRepository.findByUsername(userDto.getUsername())).isEmpty()){
                 try {
